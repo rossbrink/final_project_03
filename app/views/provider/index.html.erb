@@ -1,59 +1,47 @@
 INDEX
 
 <h3>
-  What language do you speak?
+  All Provider
 </h3>
 
-<form action="/insert_spoken_language" method="post">
-  <label for="language_name">Choose a language</label>
-  <select id="language_name" name="query_language_id">
-    <option value="1">English</option>
-    <option value="2">Spanish</option>
-    <option value="3">Polish</option>
-    <option value="4">Ukrainian</option>
-    <option value="5">Arabic</option>
-  </select>
+<table border="1">
+  <tr>
+    <th>
+      Image
+    </th>
 
-  <label for="provider_id">Provider ID</label>
-  <input id="provider_id" type="text" name="query_provider_id">
+    <th>
+      Name
+    </th>
 
-  <button>
-    Submit
-  </button>
-</form>
+    <th>
+      Price
+    </th>
 
-<h3>
-  Languages you speak
-</h3>
+    <th>
+      Link
+    </th>
+  </tr>
 
-<div>
-  <table>
-    <%# @the_provider.spoken_language.do each |a_language| %>
-      <tr>
-        <td>
-          <% the_provider_id = session.fetch("provider_id") %>
-          <%= the_provider_id %>
-          <%= the_provider = Provider.where(:id => the_provider_id).at(0) %>
-          <%= the_provider.first_name %>
-          <%= the_matching_languages = the_provider.spoken_languages %>
-          <%= a_spoken_language = the_matching_languages.at(0) %>
-          <%= a_language = a_spoken_language.language %>
-          <%= a_language.name %>
-          <%#= session.fetch("provider_id") %><%#= a_language.language.name %>
-        </td>
-      <tr>
+  <% @list_of_providers.each do |provider| %>
+  <tr>
+    <td>
+      <img src="<%= provider.image %>" width="250px">
+    </td>
 
-      <tr>
-        <td>
-          Spanish<%#= a_language.language.name %>
-        </td>
-      <tr>
+    <td>
+      <%= provider.first_name %>
+    </td>
 
-      <tr>
-        <td>
-          Polish<%#= a_language.language.name %>
-        </td>
-      <tr>
-    <%# end %>
-  </table>
-</div>
+    <td>
+      <%= provider.price %>
+    </td>
+
+    <td>
+      <a href="/provider/<%= provider.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

@@ -94,4 +94,8 @@ Rails.application.routes.draw do
 
   # HOMEPAGE
   get("/", { :controller => "provider", :action =>"index"})
+
+  # PROVIDER PROFILE
+  get("/provider/:path_id", { :controller => "provider", :action => "profile"})
+  
 end

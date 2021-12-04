@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Spoken language #<%= @the_spoken_language.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/spoken_languages">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_spoken_language/<%= @the_spoken_language.id %>">
+          Delete spoken language
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Provider
+      </dt>
+      <dd>
+        <%= @the_spoken_language.provider_id %>
+      </dd>
+
+      <dt>
+        Language
+      </dt>
+      <dd>
+        <%= @the_spoken_language.language_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_spoken_language.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_spoken_language.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit spoken language
+    </h2>
+
+    <form action="/modify_spoken_language/<%= @the_spoken_language.id %>"  method="post" >
+      <div>
+        <label for="provider_id_box">
+          Provider
+        </label>
+
+        <input type="text" id="provider_id_box" name="query_provider_id" value="<%= @the_spoken_language.provider_id %>">
+      </div>
+
+      <div>
+        <label for="language_id_box">
+          Language
+        </label>
+
+        <input type="text" id="language_id_box" name="query_language_id" value="<%= @the_spoken_language.language_id %>">
+      </div>
+
+      <button>
+        Update spoken language
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

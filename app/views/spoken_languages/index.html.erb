@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all spoken languages
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new spoken language
+    </h2>
+
+    <form action="/insert_spoken_language" method="post">
+      <div>
+        <label for="provider_id_box">
+          Provider
+        </label>
+
+        <input type="text" id="provider_id_box" name="query_provider_id">
+      </div>
+
+      <div>
+        <label for="language_id_box">
+          Language
+        </label>
+
+        <input type="text" id="language_id_box" name="query_language_id">
+      </div>
+
+      <button>
+        Create spoken language
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Provider
+        </th>
+
+        <th>
+          Language
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_spoken_languages.each do |a_spoken_language| %>
+      <tr>
+        <td>
+          <%= a_spoken_language.id %>
+        </td>
+
+        <td>
+          <%= a_spoken_language.provider_id %>
+        </td>
+
+        <td>
+          <%= a_spoken_language.language_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_spoken_language.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_spoken_language.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/spoken_languages/<%= a_spoken_language.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

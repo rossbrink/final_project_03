@@ -2,6 +2,44 @@ Rails.application.routes.draw do
 
 
 
+  # Routes for the Spoken language resource:
+
+  # CREATE
+  post("/insert_spoken_language", { :controller => "spoken_languages", :action => "create" })
+          
+  # READ
+  get("/spoken_languages", { :controller => "spoken_languages", :action => "index" })
+  
+  get("/spoken_languages/:path_id", { :controller => "spoken_languages", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_spoken_language/:path_id", { :controller => "spoken_languages", :action => "update" })
+  
+  # DELETE
+  get("/delete_spoken_language/:path_id", { :controller => "spoken_languages", :action => "destroy" })
+
+  #------------------------------
+
+  # Routes for the Language resource:
+
+  # CREATE
+  post("/insert_language", { :controller => "languages", :action => "create" })
+          
+  # READ
+  get("/languages", { :controller => "languages", :action => "index" })
+  
+  get("/languages/:path_id", { :controller => "languages", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_language/:path_id", { :controller => "languages", :action => "update" })
+  
+  # DELETE
+  get("/delete_language/:path_id", { :controller => "languages", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the User account:
 
   # SIGN UP FORM

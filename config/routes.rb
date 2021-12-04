@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   # Routes for the Spoken language resource:
 
   # CREATE
@@ -94,4 +92,6 @@ Rails.application.routes.draw do
              
   #------------------------------
 
+  # HOMEPAGE
+  get("/", { :controller => "provider", :action =>"index"})
 end

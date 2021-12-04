@@ -1,0 +1,60 @@
+<div >
+  <h5>
+    Edit Provider Account
+  </h5>
+
+  <div>
+    <form action="/modify_provider" method="post">
+      <div>
+        <label for="email_box">Email</label>
+        <input id="email_box" name="query_email" value="<%= @current_provider.email %>">
+      </div>
+      <div>
+        <label for="first_name_box">First name</label>
+        <input id="first_name_box" name="query_first_name" value="<%= @current_provider.first_name %>">
+      </div>
+      <div>
+        <label for="last_name_box">Last name</label>
+        <input id="last_name_box" name="query_last_name" value="<%= @current_provider.last_name %>">
+      </div>
+      <div>
+        <label for="price_box">Price</label>
+        <input id="price_box" name="query_price" value="<%= @current_provider.price %>">
+      </div>
+      <div>
+        <label for="image_box">Image</label>
+        <input id="image_box" name="query_image" value="<%= @current_provider.image %>">
+      </div>
+      <div>
+        <label for="description_box">Description</label>
+        <input id="description_box" name="query_description" value="<%= @current_provider.description %>">
+      </div>
+      <div>
+        <label for="reviews_count_box">Reviews count</label>
+        <input id="reviews_count_box" name="query_reviews_count" value="<%= @current_provider.reviews_count %>">
+      </div>
+      <div>
+        <label for="spoken_languages_count_box">Spoken languages count</label>
+        <input id="spoken_languages_count_box" name="query_spoken_languages_count" value="<%= @current_provider.spoken_languages_count %>">
+      </div>
+      <div>
+        <label for="services_count_box">Services count</label>
+        <input id="services_count_box" name="query_services_count" value="<%= @current_provider.services_count %>">
+      </div>
+
+      <div>
+        <label for="password_box">Password</label>
+        <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
+      </div>
+    
+      <div>
+        <label for="password_confirmation_box">Password Confirmation</label>
+        <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
+      </div>
+
+      <button>
+        Update account
+      </button>
+    </form>
+  </div>
+</div>

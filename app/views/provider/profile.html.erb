@@ -1,30 +1,18 @@
 PROFILE
 
 <h3>
-  What language do you speak?
-</h3>
-
-<form action="/insert_spoken_language" method="post">
-  <label for="language_name">Choose a language</label>
-  <select id="language_name" name="query_language_id">
-    <option value="1">English</option>
-    <option value="2">Spanish</option>
-    <option value="3">Polish</option>
-    <option value="4">Ukrainian</option>
-    <option value="5">Arabic</option>
-  </select>
-
-  <label for="provider_id"></label>
-  <input id="provider_id" type="hidden" name="query_provider_id" value="<%= params.fetch("path_id") %>">
-
-  <button>
-    Submit
-  </button>
-</form>
-
-<h3>
   Languages you speak
 </h3>
+
+<% if @current_provider != nil %>
+  <% if @current_provider.id = params.fetch("path_id") %>
+    <form action="/provider/<%= @current_provider.id %>/edit" method="get">
+      <button>Edit</button>
+    </form>
+  <% else %>
+  <% end %>
+<% else %>
+<% end %>
 
 <div>
   <table>

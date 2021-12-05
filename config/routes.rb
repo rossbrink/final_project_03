@@ -97,5 +97,8 @@ Rails.application.routes.draw do
 
   # PROVIDER PROFILE
   get("/provider/:path_id", { :controller => "provider", :action => "profile"})
+
+  # PROVIDER EDIT PROFILE
+  get("/provider/:path_id/edit", { :controller => "provider", :action => "profile_edit"})
   
 end

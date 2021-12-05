@@ -17,29 +17,61 @@
 
   <body>
     <nav>
-      <div>
+      <ul>
+      <li>
         <a href="/">
           Home
         </a>
-      </div>
+      </li>
 
-      <div>
+      <% if @current_provider == nil %>
+      <li>
         <a href="/provider_sign_up">
           Provider Sign Up
         </a>
-      </div>
+      </li>
 
-      <div>
+      <li>
         <a href="/provider_sign_in">
           Provider Sign In
         </a>
-      </div>
+      </li>
 
-      <div>
+      <% else %>
+      <li>
         <a href="/provider_sign_out">
           Provider Sign Out
         </a>
-      </div>
+      </li>
+
+      <li>
+        <%= @current_provider.id %>
+      </li>
+      
+      <% end %>
+
+      <% if @current_user == nil %>
+      <li>
+        <a href="/user_sign_up">
+          User Sign Up
+        </a>
+      </li>
+
+      <li>
+        <a href="/user_sign_in">
+          User Sign In
+        </a>
+      </li>
+
+      <% else %>
+      <li>
+        <a href="/user_sign_out">
+          User Sign Out
+        </a>
+      </li>
+      <% end %>
+
+      </ul>
 
     </nav>
     <%= yield %>

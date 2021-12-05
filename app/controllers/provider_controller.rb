@@ -6,12 +6,19 @@ class ProviderController < ApplicationController
   end
 
   def profile
-    the_provider_id = session.fetch("provider_id")
+    the_provider_id = params.fetch("path_id")
+    @the_provider = Provider.where(:id => the_provider_id).at(0)
+
+    render({ :template => "provider/profile.html.erb"})
+  end
+
+  def profile_edit
+    the_provider_id = @current_provider
     @the_provider = Provider.where(:id => the_provider_id).at(0)
     # the_matching_languages = the_provider.spoken_languages
     # a_spoken_language = the_matching_languages.at(0)
     # @a_language = a_spoken_language.language
 
-    render({ :template => "provider/profile.html.erb"})
+    render({ :template => "provider/profile_edit.html.erb"})
   end
 end

@@ -73,8 +73,6 @@ need.name = "Cystic Fibrosis"
 need.description = "xxxx"
 need.save
 
-end
-
 # ADD PROVIDERS
 Provider.destroy_all
 
@@ -87,7 +85,7 @@ Provider.destroy_all
   provider.last_name = Faker::Name.last_name
   provider.email = Faker::Internet.email
   provider.password = "password"
-  provider.price = Faker::Number.decimal_part(digits: 2)
+  provider.price = Faker::Number.within(range: 5..25)
   provider.save
 end
 
@@ -100,3 +98,16 @@ ross.email = "ross@email.com"
 ross.password = "password"
 ross.price = 14.99
 ross.save
+
+# ADD USER
+User.destroy_all
+
+user = User.new
+user.id = 1
+user.email = "user@email.com"
+user.first_name = "Sarah"
+user.last_name = "Rosenwinkel"
+user.password = "password"
+user.save
+
+end

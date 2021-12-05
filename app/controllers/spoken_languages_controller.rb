@@ -25,7 +25,7 @@ class SpokenLanguagesController < ApplicationController
 
     if the_spoken_language.valid?
       the_spoken_language.save
-      redirect_to("/provider/#{the_spoken_language.provider_id}", { :notice => "Spoken language created successfully." })
+      redirect_to("/provider/#{the_spoken_language.provider_id}/edit", { :notice => "Spoken language created successfully." })
     else
       redirect_to("/spoken_languages", { :notice => "Spoken language failed to create successfully." })
     end

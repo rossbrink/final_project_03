@@ -6,6 +6,15 @@
   What language do you speak?
 </h3>
 
+<% Language.all.each do |a_language|%>
+  <form action="/insert_spoken_language" method="post">
+    <label for="language_<%= a_language.id %>"></label>
+    <input id="language_<%= a_language.id %>" type="hidden" name="query_language_id" value="<%= a_language.id %>">
+
+    <button><%= a_language.name %></button>
+  </form>
+<% end %>
+
 <form action="/insert_spoken_language" method="post">
   <label for="language_name">Choose a language</label>
   <select id="language_name" name="query_language_id">

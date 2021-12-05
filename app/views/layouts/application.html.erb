@@ -24,7 +24,7 @@
         </a>
       </li>
 
-      <% if @current_provider == nil %>
+      <% if @current_provider == nil  %>
       <li>
         <a href="/provider_sign_up">
           Provider Sign Up
@@ -74,6 +74,11 @@
       </ul>
 
     </nav>
+
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
+
+
     <%= yield %>
   </body>
 </html>

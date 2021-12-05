@@ -17,16 +17,31 @@ class ServicesController < ApplicationController
     render({ :template => "services/show.html.erb" })
   end
 
+
+  # def create
+  #   the_spoken_language = SpokenLanguage.new
+  #   the_spoken_language.provider_id = @current_provider.id
+  #   the_spoken_language.language_id = params.fetch("query_language_id")
+
+  #   if the_spoken_language.valid?
+  #     the_spoken_language.save
+  #     redirect_to("/provider/#{the_spoken_language.provider_id}/edit", { :notice => "Spoken language created successfully." })
+  #   else
+  #     redirect_to("/provider/#{the_spoken_language.provider_id}/edit", { :notice => "Spoken language failed to create successfully." })
+  #   end
+  # end
+
+
   def create
     the_service = Service.new
     the_service.need_id = params.fetch("query_need_id")
-    the_service.provider_id = params.fetch("query_provider_id")
+    the_service.provider_id = @current_provider.id
 
     if the_service.valid?
       the_service.save
-      redirect_to("/services", { :notice => "Service created successfully." })
+      redirect_to("/provider/#{the_service.provider_id}/edit", { :notice => "Service created successfully." })
     else
-      redirect_to("/services", { :notice => "Service failed to create successfully." })
+      redirect_to("/provider/#{the_service.provider_id}/edit", { :notice => "Service failed to create successfully." })
     end
   end
 
@@ -51,6 +66,6 @@ class ServicesController < ApplicationController
 
     the_service.destroy
 
-    redirect_to("/services", { :notice => "Service deleted successfully."} )
+    redirect_to("/provider/#{the_service.provider_id}/edit", { :notice => "Service deleted successfully."} )
   end
 end

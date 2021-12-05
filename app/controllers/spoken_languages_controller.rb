@@ -19,7 +19,6 @@ class SpokenLanguagesController < ApplicationController
 
   def create
     the_spoken_language = SpokenLanguage.new
-    # the_spoken_language.provider_id = params.fetch("query_provider_id")
     the_spoken_language.provider_id = @current_provider.id
     the_spoken_language.language_id = params.fetch("query_language_id")
 

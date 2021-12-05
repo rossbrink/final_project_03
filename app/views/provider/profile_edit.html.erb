@@ -30,8 +30,56 @@
 
         <td>
           <a href="/delete_spoken_language/<%= a_spoken_language.id %>">Remove</a>
+        </td>
       <tr>
 
     <% end %>
   </table>
+</div>
+
+
+<h3>
+  What Special Needs Do You Serve?
+</h3>
+
+<% Need.all.each do |a_need|%>
+  <form action="/insert_service" method="post">
+    <label for="need_<%= a_need.id %>"></label>
+    <input id="need_<%= a_need.id %>" type="hidden" name="query_need_id" value="<%= a_need.id %>">
+
+    <button><%= a_need.name %></button>
+  </form>
+<% end %>
+
+
+<h3>
+  Special Needs You Serve
+</h3>
+
+<div>
+  <table>
+    <% @the_provider.services.each do |a_service| %>
+
+      <tr>
+        <td>
+          <%= a_service.need.name %>
+        </td>
+
+        <td>
+          <%= a_service.need.description %>
+        </td>
+
+        <td>
+          <a href="/delete_service/<%= a_service.id %>">Remove</a>
+        </td>
+      <tr>
+
+    <% end %>
+  </table>
+</div>
+
+<div>
+  <form action="/provider/<%= @current_provider.id %>">
+    <button>Done</button>
+  </form>
 </div>

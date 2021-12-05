@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_05_081848) do
+ActiveRecord::Schema.define(version: 2021_12_05_084612) do
 
   create_table "languages", force: :cascade do |t|
     t.string "name"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 2021_12_05_081848) do
     t.integer "reviews_count"
     t.integer "spoken_languages_count"
     t.integer "services_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "provider_id"
+    t.integer "author_id"
+    t.integer "rating"
+    t.string "description"
+    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

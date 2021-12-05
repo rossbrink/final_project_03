@@ -80,7 +80,8 @@
   Reviews
 </h3>
 
-<form action="/insert_review" method="post" enctype="multipart/form-data">
+<% if @current_user != nil %>
+  <form action="/insert_review" method="post" enctype="multipart/form-data">
 
   <div>
     <label for="title">Title</label>
@@ -112,7 +113,9 @@
     Post a Review
   </button>
 
-</form>
+  </form>
+<% else %>
+<% end %>
 
 <div>
   <table>
@@ -135,12 +138,15 @@
           <%= a_review.user.first_name %>
         </td>
 
-      <% if a_review.author_id == @current_user.id %>
-        <td>
-          <a href="/delete_review/<%= a_review.id %>">
-            Remove
-          </a>
-        </td>
+      <% if @current_user != nil %>
+        <% if a_review.author_id == @current_user.id %>
+          <td>
+            <a href="/delete_review/<%= a_review.id %>">
+              Remove
+            </a>
+          </td>
+        <% else %>
+        <% end %>
       <% else %>
       <% end %>
       <tr>

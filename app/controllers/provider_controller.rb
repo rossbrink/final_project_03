@@ -1,8 +1,12 @@
 class ProviderController < ApplicationController
   def index
+    @q = Provider.ransack(params[:q])
+    @providers = @q.result
+    
     matching_providers = Provider.all
     @list_of_providers = matching_providers.order({ :created_at => :desc })
     render({ :template => "provider/index.html.erb"})
+
   end
 
   def profile

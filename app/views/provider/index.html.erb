@@ -1,8 +1,22 @@
 INDEX
 
 <h3>
-  All Provider
+  All Providers
 </h3>
+
+<%= search_form_for(@q, url: "/", method: :get) do |f| %>
+  <p>Narrow results:</p>
+
+  <div>
+    <%= f.label :first_name_cont, "Title containing" %>
+    <%= f.text_field :first_name_cont, :placeholder => "Enter a few characters" %>
+  </div>
+
+  <%= f.submit :class => "btn btn-primary btn-block" %>
+  
+  <a href="/">Clear filters</a>
+<% end %>
+
 
 <table border="1">
   <tr>
@@ -31,7 +45,7 @@ INDEX
     </th>
   </tr>
 
-  <% @list_of_providers.each do |provider| %>
+  <% @providers.each do |provider| %>
   <tr>
     <td>
       <img src="<%= provider.image %>" width="250px">

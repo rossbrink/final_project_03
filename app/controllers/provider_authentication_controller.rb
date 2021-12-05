@@ -1,6 +1,8 @@
 class ProviderAuthenticationController < ApplicationController
   # Uncomment this if you want to force providers to sign in before any other actions
   # skip_before_action(:force_provider_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
+  skip_before_action(:force_all_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
+
 
   def sign_in_form
     render({ :template => "provider_authentication/sign_in.html.erb" })

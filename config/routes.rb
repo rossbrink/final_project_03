@@ -1,5 +1,43 @@
 Rails.application.routes.draw do
 
+  # Routes for the Area resource:
+
+  # CREATE
+  post("/insert_area", { :controller => "areas", :action => "create" })
+          
+  # READ
+  get("/areas", { :controller => "areas", :action => "index" })
+  
+  get("/areas/:path_id", { :controller => "areas", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_area/:path_id", { :controller => "areas", :action => "update" })
+  
+  # DELETE
+  get("/delete_area/:path_id", { :controller => "areas", :action => "destroy" })
+
+  #------------------------------
+
+  # Routes for the Neighborhood resource:
+
+  # CREATE
+  post("/insert_neighborhood", { :controller => "neighborhoods", :action => "create" })
+          
+  # READ
+  get("/neighborhoods", { :controller => "neighborhoods", :action => "index" })
+  
+  get("/neighborhoods/:path_id", { :controller => "neighborhoods", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_neighborhood/:path_id", { :controller => "neighborhoods", :action => "update" })
+  
+  # DELETE
+  get("/delete_neighborhood/:path_id", { :controller => "neighborhoods", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Review resource:
 
   # CREATE

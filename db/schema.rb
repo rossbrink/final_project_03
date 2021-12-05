@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_05_085051) do
+ActiveRecord::Schema.define(version: 2021_12_05_233724) do
+
+  create_table "areas", force: :cascade do |t|
+    t.integer "neighborhood_id"
+    t.integer "provider_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "languages", force: :cascade do |t|
     t.string "name"
@@ -23,6 +30,13 @@ ActiveRecord::Schema.define(version: 2021_12_05_085051) do
     t.string "name"
     t.string "description"
     t.integer "services_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "neighborhoods", force: :cascade do |t|
+    t.string "name"
+    t.integer "areas_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

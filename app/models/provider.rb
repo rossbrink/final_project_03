@@ -26,12 +26,13 @@ class Provider < ApplicationRecord
   has_many(:reviews, { :class_name => "Review", :foreign_key => "provider_id", :dependent => :destroy })
 
   has_many(:spoken_languages, { :class_name => "SpokenLanguage", :foreign_key => "provider_id", :dependent => :destroy })
-
   has_many(:languages, { :through => :spoken_languages, :source => :language })
 
   has_many(:services, { :class_name => "Service", :foreign_key => "provider_id", :dependent => :destroy })
-
   has_many(:needs, { :through => :services, :source => :need })
+
+  has_many(:areas, { :class_name => "Area", :foreign_key => "provider_id", :dependent => :destroy })
+  has_many(:neighborhoods, { :through => :areas, :source => :neighborhood })
 
   def full_name
     first = self.first_name

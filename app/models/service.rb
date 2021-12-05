@@ -11,4 +11,6 @@
 class Service < ApplicationRecord
   belongs_to(:provider, { :required => true, :class_name => "Provider", :foreign_key => "provider_id", :counter_cache => true })
   belongs_to(:need, { :required => true, :class_name => "Need", :foreign_key => "need_id", :counter_cache => true })
+
+  validates(:need_id, { :uniqueness => { :scope => [:provider_id] }})
 end

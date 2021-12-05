@@ -23,3 +23,13 @@
     </td>
   </tr>
 </table>
+
+<% if @current_user != nil %>
+  <% if @current_user.id == @the_user.id %>
+    <form action="/edit_user_profile" method="get">
+      <button>Edit</button>
+    </form>
+  <% else %>
+  <% end %>
+<% else %>
+<% end %>

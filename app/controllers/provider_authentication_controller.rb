@@ -84,7 +84,7 @@ class ProviderAuthenticationController < ApplicationController
     if @provider.valid?
       @provider.save
 
-      redirect_to("/", { :notice => "Provider account updated successfully."})
+      redirect_to("/provider/#{@current_provider.id}/edit", { :notice => "Provider account updated successfully."})
     else
       render({ :template => "provider_authentication/edit_profile_with_errors.html.erb" })
     end

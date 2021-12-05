@@ -11,4 +11,5 @@
 #
 class Need < ApplicationRecord
   has_many(:services, { :class_name => "Service", :foreign_key => "need_id", :dependent => :destroy })
+  has_many(:providers, { :through => :services, :source => :provider })
 end

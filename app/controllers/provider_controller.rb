@@ -1,7 +1,7 @@
 class ProviderController < ApplicationController
   def index
     @q = Provider.ransack(params[:q])
-    @providers = @q.result(:distinct => true).includes(:languages)
+    @providers = @q.result(:distinct => true).includes(:languages, :needs)
     
     matching_providers = Provider.all
     @list_of_providers = matching_providers.order({ :created_at => :desc })

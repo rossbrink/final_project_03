@@ -60,15 +60,15 @@
 
 <div>
   <table>
-    <% @the_provider.services.each do |a_service| %>
+    <% @the_provider.needs.each do |a_need| %>
 
       <tr>
         <td>
-          <%= a_service.need.name %>
+          <%= a_need.name %>
         </td>
 
         <td>
-          <%= a_service.need.description %>
+          <%= a_need.description %>
         </td>
       <tr>
 

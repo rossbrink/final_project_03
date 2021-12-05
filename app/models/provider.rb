@@ -31,6 +31,8 @@ class Provider < ApplicationRecord
 
   has_many(:services, { :class_name => "Service", :foreign_key => "provider_id", :dependent => :destroy })
 
+  has_many(:needs, { :through => :services, :source => :need })
+
   def full_name
     first = self.first_name
     last = self.last_name

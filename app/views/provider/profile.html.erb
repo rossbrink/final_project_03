@@ -2,6 +2,22 @@
   <%= @the_provider.first_name %>
 </h1>
 
+<div>
+  <img src="<%= @the_provider.image %>" width="250px">
+</div>
+
+<div>
+  <h1>
+    $<%= @the_provider.price %>/hr
+  </h1>
+</div>
+
+<div>
+  <a href="mailto:<%= @the_provider.email %>">
+    <button class="button">Email</button>
+  </a>
+</div>
+
 <% if @current_provider != nil %>
   <% if @current_provider.id == @the_provider.id %>
     <form action="/provider/<%= @current_provider.id %>/edit" method="get">

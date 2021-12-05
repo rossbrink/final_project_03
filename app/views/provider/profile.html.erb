@@ -7,7 +7,7 @@
 </h3>
 
 <% if @current_provider != nil %>
-  <% if @current_provider.id = params.fetch("path_id") %>
+  <% if @current_provider.id == @the_provider.id %>
     <form action="/provider/<%= @current_provider.id %>/edit" method="get">
       <button>Edit</button>
     </form>

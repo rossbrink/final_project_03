@@ -13,9 +13,15 @@
 </div>
 
 <div>
-  <a href="mailto:<%= @the_provider.email %>">
-    <button class="button">Email</button>
-  </a>
+  <% if @current_user == nil %>
+    <a href="/user_sign_in">
+      <button class="button">Sign in to email</button>
+    </a>
+  <% else %>
+    <a href="mailto:<%= @the_provider.email %>" target="_blank">
+      <button class="button">Email</button>
+    </a>
+  <% end %>
 </div>
 
 <% if @current_provider != nil %>

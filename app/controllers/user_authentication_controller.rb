@@ -8,6 +8,10 @@ class UserAuthenticationController < ApplicationController
     render({ :template => "user_authentication/sign_in.html.erb" })
   end
 
+  def sign_in_form_to_email
+    render({ :template => "user_authentication/sign_in_to_email.html.erb" })
+  end
+
   def create_cookie
     user = User.where({ :email => params.fetch("query_email") }).first
     
@@ -27,6 +31,27 @@ class UserAuthenticationController < ApplicationController
       redirect_to("/user_sign_in", { :alert => "No user with that email address." })
     end
   end
+
+  def create_cookie_to_email
+    user = User.where({ :email => params.fetch("query_email") }).first
+    
+    the_supplied_password = params.fetch("query_password")
+    
+    if user != nil
+      are_they_legit = user.authenticate(the_supplied_password)
+    
+      if are_they_legit == false
+        redirect_to("/user_sign_in", { :alert => "Incorrect password." })
+      else
+        session[:user_id] = user.id
+      
+        redirect_to("/provider/1", { :notice => "Signed in successfully." })
+      end
+    else
+      redirect_to("/user_sign_in", { :alert => "No user with that email address." })
+    end
+  end
+
 
   def destroy_cookies
     reset_session

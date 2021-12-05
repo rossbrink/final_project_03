@@ -114,8 +114,15 @@ Rails.application.routes.draw do
 
   # SIGN IN FORM
   get("/user_sign_in", { :controller => "user_authentication", :action => "sign_in_form" })
+
+    # SIGN IN FORM TO EMAIL
+    get("/user_sign_in_to_email", { :controller => "user_authentication", :action => "sign_in_form_to_email" })
+
   # AUTHENTICATE AND STORE COOKIE
   post("/user_verify_credentials", { :controller => "user_authentication", :action => "create_cookie" })
+
+   # AUTHENTICATE AND STORE COOKIE TO EMAIL
+   post("/user_verify_credentials_to_email", { :controller => "user_authentication", :action => "create_cookie_to_email" })
   
   # SIGN OUT        
   get("/user_sign_out", { :controller => "user_authentication", :action => "destroy_cookies" })

@@ -76,28 +76,47 @@ need.save
 # ADD PROVIDERS
 Provider.destroy_all
 
-10.times do
-  provider = Provider.new
-  provider.description = Faker::Restaurant.description
-  provider.first_name = Faker::Name.first_name
-  provider.image = Faker::Fillmurray.image
-  # provider.image = Faker::Placeholdit.image
-  provider.last_name = Faker::Name.last_name
-  provider.email = Faker::Internet.email
-  provider.password = "password"
-  provider.price = Faker::Number.within(range: 5..25)
-  provider.save
-end
+# 10.times do
+#   provider = Provider.new
+#   provider.description = Faker::Restaurant.description
+#   provider.first_name = Faker::Name.first_name
+#   provider.image = Faker::Fillmurray.image
+#   # provider.image = Faker::Placeholdit.image
+#   provider.last_name = Faker::Name.last_name
+#   provider.email = Faker::Internet.email
+#   provider.password = "password"
+#   provider.price = Faker::Number.within(range: 5..25)
+#   provider.save
+# end
 
 ross = Provider.new
 ross.description = "Just a good-ass dood."
 ross.first_name = "Ross"
-ross.image = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/005.png"
 ross.last_name = "Brinkman"
 ross.email = "ross@email.com"
 ross.password = "password"
 ross.price = 14.99
 ross.save
+
+wartortle = Provider.new
+wartortle = Provider.new
+wartortle.description = "Squirt squirt."
+wartortle.first_name = "Wartortle"
+wartortle.last_name = "Pokemon"
+wartortle.email = "wartortle@email.com"
+wartortle.password = "password"
+wartortle.price = 15.99
+wartortle.save
+
+bulbasaur = Provider.new
+bulbasaur = Provider.new
+bulbasaur.description = "Plants n' shit."
+bulbasaur.first_name = "Bulbasaur"
+bulbasaur.last_name = "Pokemon"
+bulbasaur.email = "bulbasaur@email.com"
+bulbasaur.password = "password"
+bulbasaur.price = 12.99
+bulbasaur.save
 
 # ADD USER
 User.destroy_all

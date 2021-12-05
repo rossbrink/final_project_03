@@ -19,6 +19,14 @@ INDEX
     </th>
 
     <th>
+      Languages
+    </th>
+
+    <th>
+      Services
+    </th>
+
+    <th>
       Link
     </th>
   </tr>
@@ -30,11 +38,23 @@ INDEX
     </td>
 
     <td>
-      <%= provider.first_name %>
+      <%= provider.full_name %>
     </td>
 
     <td>
       <%= provider.price %>
+    </td>
+
+    <td>
+      <% provider.spoken_languages.each do |a_spoken_language| %>
+          <%= a_spoken_language.language.name %>
+      <% end %>
+    </td>
+
+    <td>
+      <% provider.services.each do |a_service| %>
+          <%= a_service.need.name %>
+      <% end %>
     </td>
 
     <td>

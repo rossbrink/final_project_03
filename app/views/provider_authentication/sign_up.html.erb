@@ -27,6 +27,7 @@
          
   <div>
     <label for="image_box">Image</label>
+    <%#= image_tag(@the_provider.image_url) if @the_provider.image? %>
       
     <input type="file" id="image_box" name="image" class="form-control">
   </div>

@@ -20,14 +20,14 @@ class ReviewsController < ApplicationController
   def create
     the_review = Review.new
     the_review.provider_id = params.fetch("query_provider_id")
-    the_review.author_id = params.fetch("query_author_id")
+    the_review.author_id = @current_user.id
     the_review.rating = params.fetch("query_rating")
     the_review.description = params.fetch("query_description")
     the_review.title = params.fetch("query_title")
 
     if the_review.valid?
       the_review.save
-      redirect_to("/reviews", { :notice => "Review created successfully." })
+      redirect_to("/provider/#{the_review.provider_id}", { :notice => "Review created successfully." })
     else
       redirect_to("/reviews", { :notice => "Review failed to create successfully." })
     end
@@ -57,6 +57,6 @@ class ReviewsController < ApplicationController
 
     the_review.destroy
 
-    redirect_to("/reviews", { :notice => "Review deleted successfully."} )
+    redirect_to("/provider/#{the_review.provider_id}", { :notice => "Review deleted successfully."} )
   end
 end

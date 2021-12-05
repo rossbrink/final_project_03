@@ -15,24 +15,6 @@
   </form>
 <% end %>
 
-<form action="/insert_spoken_language" method="post">
-  <label for="language_name">Choose a language</label>
-  <select id="language_name" name="query_language_id">
-    <option value="1">English</option>
-    <option value="2">Spanish</option>
-    <option value="3">Polish</option>
-    <option value="4">Ukrainian</option>
-    <option value="5">Arabic</option>
-  </select>
-
-  <label for="provider_id"></label>
-  <input id="provider_id" type="hidden" name="query_provider_id" value="<%= params.fetch("path_id") %>">
-
-  <button>
-    Submit
-  </button>
-</form>
-
 <h3>
   Languages you speak
 </h3>
@@ -45,6 +27,9 @@
         <td>
           <%= a_spoken_language.language.name %>
         </td>
+
+        <td>
+          <a href="/delete_spoken_language/<%= a_spoken_language.id %>">Remove</a>
       <tr>
 
     <% end %>

@@ -52,6 +52,6 @@ class SpokenLanguagesController < ApplicationController
 
     the_spoken_language.destroy
 
-    redirect_to("/spoken_languages", { :notice => "Spoken language deleted successfully."} )
+    redirect_to("/provider/#{the_spoken_language.provider_id}/edit", { :notice => "Spoken language deleted successfully."} )
   end
 end

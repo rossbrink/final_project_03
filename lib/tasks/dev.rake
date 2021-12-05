@@ -3,47 +3,6 @@ task({ :sample_data => :environment}) do
 
 require 'faker'
 
-# ADD PROVIDERS
-
-#  id                     :integer          not null, primary key
-#  description            :string
-#  email                  :string
-#  first_name             :string
-#  image                  :string
-#  last_name              :string
-#  password_digest        :string
-#  price                  :float
-#  reviews_count          :integer
-#  services_count         :integer
-#  spoken_languages_count :integer
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-
-Provider.destroy_all
-
-10.times do
-  provider = Provider.new
-  provider.description = Faker::Restaurant.description
-  provider.first_name = Faker::Name.first_name
-  provider.image = Faker::Fillmurray.image
-  # provider.image = Faker::Placeholdit.image
-  provider.last_name = Faker::Name.last_name
-  provider.email = Faker::Internet.email
-  provider.password = "password"
-  provider.price = Faker::Number.decimal_part(digits: 2)
-  provider.save
-end
-
-ross = Provider.new
-ross.description = "Just a good-ass dood."
-ross.first_name = "Ross"
-ross.image = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/005.png"
-ross.last_name = "Brinkman"
-ross.email = "ross@email.com"
-ross.password = "password"
-ross.price = 14.99
-ross.save
-
 Language.destroy_all
 
 # ENGLISH
@@ -115,3 +74,29 @@ need.description = "xxxx"
 need.save
 
 end
+
+# ADD PROVIDERS
+Provider.destroy_all
+
+10.times do
+  provider = Provider.new
+  provider.description = Faker::Restaurant.description
+  provider.first_name = Faker::Name.first_name
+  provider.image = Faker::Fillmurray.image
+  # provider.image = Faker::Placeholdit.image
+  provider.last_name = Faker::Name.last_name
+  provider.email = Faker::Internet.email
+  provider.password = "password"
+  provider.price = Faker::Number.decimal_part(digits: 2)
+  provider.save
+end
+
+ross = Provider.new
+ross.description = "Just a good-ass dood."
+ross.first_name = "Ross"
+ross.image = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/005.png"
+ross.last_name = "Brinkman"
+ross.email = "ross@email.com"
+ross.password = "password"
+ross.price = 14.99
+ross.save

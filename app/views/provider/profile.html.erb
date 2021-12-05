@@ -67,3 +67,33 @@
     <% end %>
   </table>
 </div>
+
+<h3>
+  Reviews
+</h3>
+
+<div>
+  <table>
+    <% @the_provider.reviews.each do |a_review| %>
+
+      <tr>
+        <td>
+          <%= a_review.rating %>
+        </td>
+
+        <td>
+          <%= a_review.title %>
+        </td>
+
+        <td>
+          <%= a_review.description %>
+        </td>
+
+        <td>
+          <%= a_review.user.first_name %>
+        </td>
+      <tr>
+
+    <% end %>
+  </table>
+</div>

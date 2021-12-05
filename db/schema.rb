@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_05_084612) do
+ActiveRecord::Schema.define(version: 2021_12_05_085051) do
 
   create_table "languages", force: :cascade do |t|
     t.string "name"
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 2021_12_05_084612) do
     t.integer "provider_id"
     t.integer "author_id"
     t.integer "rating"
-    t.string "description"
-    t.string "title"
+    t.text "description"
+    t.text "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

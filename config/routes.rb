@@ -1,5 +1,43 @@
 Rails.application.routes.draw do
 
+  # Routes for the Service resource:
+
+  # CREATE
+  post("/insert_service", { :controller => "services", :action => "create" })
+          
+  # READ
+  get("/services", { :controller => "services", :action => "index" })
+  
+  get("/services/:path_id", { :controller => "services", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_service/:path_id", { :controller => "services", :action => "update" })
+  
+  # DELETE
+  get("/delete_service/:path_id", { :controller => "services", :action => "destroy" })
+
+  #------------------------------
+
+  # Routes for the Need resource:
+
+  # CREATE
+  post("/insert_need", { :controller => "needs", :action => "create" })
+          
+  # READ
+  get("/needs", { :controller => "needs", :action => "index" })
+  
+  get("/needs/:path_id", { :controller => "needs", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_need/:path_id", { :controller => "needs", :action => "update" })
+  
+  # DELETE
+  get("/delete_need/:path_id", { :controller => "needs", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Spoken language resource:
 
   # CREATE

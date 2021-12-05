@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Service #<%= @the_service.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/services">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_service/<%= @the_service.id %>">
+          Delete service
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Need
+      </dt>
+      <dd>
+        <%= @the_service.need_id %>
+      </dd>
+
+      <dt>
+        Provider
+      </dt>
+      <dd>
+        <%= @the_service.provider_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_service.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_service.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit service
+    </h2>
+
+    <form action="/modify_service/<%= @the_service.id %>"  method="post" >
+      <div>
+        <label for="need_id_box">
+          Need
+        </label>
+
+        <input type="text" id="need_id_box" name="query_need_id" value="<%= @the_service.need_id %>">
+      </div>
+
+      <div>
+        <label for="provider_id_box">
+          Provider
+        </label>
+
+        <input type="text" id="provider_id_box" name="query_provider_id" value="<%= @the_service.provider_id %>">
+      </div>
+
+      <button>
+        Update service
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

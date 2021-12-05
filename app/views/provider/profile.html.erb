@@ -2,10 +2,6 @@
   <%= @the_provider.first_name %>
 </h1>
 
-<h3>
-  Languages you speak
-</h3>
-
 <% if @current_provider != nil %>
   <% if @current_provider.id == @the_provider.id %>
     <form action="/provider/<%= @current_provider.id %>/edit" method="get">
@@ -16,6 +12,10 @@
 <% else %>
 <% end %>
 
+<h3>
+  Languages you speak
+</h3>
+
 <div>
   <table>
     <% @the_provider.spoken_languages.each do |a_spoken_language| %>
@@ -23,6 +23,28 @@
       <tr>
         <td>
           <%= a_spoken_language.language.name %>
+        </td>
+      <tr>
+
+    <% end %>
+  </table>
+</div>
+
+<h3>
+  Needs you serve
+</h3>
+
+<div>
+  <table>
+    <% @the_provider.services.each do |a_service| %>
+
+      <tr>
+        <td>
+          <%= a_service.need.name %>
+        </td>
+
+        <td>
+          <%= a_service.need.description %>
         </td>
       <tr>
 

@@ -33,4 +33,42 @@ language.id = 5
 language.name = "Arabic"
 language.save
 
+
+Need.destroy_all
+
+# AUTISM
+need = Need.new
+need.id = 1
+need.name = "Autism"
+need.description = "xxxx"
+need.save
+
+# DOWN SYNDROME
+need = Need.new
+need.id = 2
+need.name = "Down Syndrome"
+need.description = "xxxx"
+need.save
+
+# CEREBRAL PALSY
+need = Need.new
+need.id = 3
+need.name = "Cerebral Palsy"
+need.description = "xxxx"
+need.save
+
+# ADHD
+need = Need.new
+need.id = 4
+need.name = "ADHD"
+need.description = "xxxx"
+need.save
+
+# CYSTIC FIBROSIS
+need = Need.new
+need.id = 5
+need.name = "Cystic Fibrosis"
+need.description = "xxxx"
+need.save
+
 end

@@ -122,6 +122,13 @@ Rails.application.routes.draw do
              
   #------------------------------
 
+  # USER PROFILE
+  get("/user/:path_id", { :controller => "user", :action => "profile"})
+
+  # USER EDIT PROFILE
+  get("/user/:path_id/edit", { :controller => "user", :action => "profile_edit"})
+
+
   # Routes for the Provider account:
 
   # SIGN UP FORM

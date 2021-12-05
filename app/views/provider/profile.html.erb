@@ -42,11 +42,11 @@
 
 <div>
   <table>
-    <% @the_provider.spoken_languages.each do |a_spoken_language| %>
+    <% @the_provider.languages.each do |a_language| %>
 
       <tr>
         <td>
-          <%= a_spoken_language.language.name %>
+          <%= a_language.name %>
         </td>
       <tr>
 

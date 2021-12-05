@@ -27,6 +27,8 @@ class Provider < ApplicationRecord
 
   has_many(:spoken_languages, { :class_name => "SpokenLanguage", :foreign_key => "provider_id", :dependent => :destroy })
 
+  has_many(:languages, { :through => :spoken_languages, :source => :language })
+
   has_many(:services, { :class_name => "Service", :foreign_key => "provider_id", :dependent => :destroy })
 
   def full_name

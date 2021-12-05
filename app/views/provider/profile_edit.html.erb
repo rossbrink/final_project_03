@@ -4,7 +4,7 @@
 
 
   <div>
-    <form action="/modify_provider" method="post">
+    <form action="/modify_provider" method="post" enctype="multipart/form-data">
       <div>
         <label for="email_box">Email</label>
         <input id="email_box" name="query_email" value="<%= @current_provider.email %>">
@@ -23,7 +23,7 @@
       </div>
       <div>
         <label for="image_box">Image</label>
-        <input id="image_box" name="query_image" value="<%= @current_provider.image %>">
+        <input type="file" id="image_box" name="image" class="form-control">
       </div>
       <div>
         <label for="description_box">Description</label>

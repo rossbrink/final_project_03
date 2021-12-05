@@ -24,7 +24,7 @@
         </a>
       </li>
 
-      <% if @current_provider == nil  %>
+      <% if @current_provider == nil && @current_user == nil %>
       <li>
         <a href="/provider_sign_up">
           Provider Sign Up
@@ -37,20 +37,6 @@
         </a>
       </li>
 
-      <% else %>
-      <li>
-        <a href="/provider_sign_out">
-          Provider Sign Out
-        </a>
-      </li>
-
-      <li>
-        <%= @current_provider.id %>
-      </li>
-      
-      <% end %>
-
-      <% if @current_user == nil %>
       <li>
         <a href="/user_sign_up">
           User Sign Up
@@ -63,14 +49,30 @@
         </a>
       </li>
 
-      <% else %>
+      <% elsif @current_provider != nil %>
+      <li>
+        <a href="/provider_sign_out">
+          Provider Sign Out
+        </a>
+      </li>
+
+      <li>
+        Provider <%= @current_provider.id %>
+      </li>
+
+      <% elsif @current_user != nil %>
       <li>
         <a href="/user_sign_out">
           User Sign Out
         </a>
       </li>
-      <% end %>
 
+      <li>
+        User <%= @current_user.id %>
+      </li>
+      <% else %>
+      
+      <% end %>
       </ul>
 
     </nav>

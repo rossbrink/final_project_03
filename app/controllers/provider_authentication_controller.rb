@@ -75,7 +75,12 @@ class ProviderAuthenticationController < ApplicationController
     @provider.first_name = params.fetch("query_first_name")
     @provider.last_name = params.fetch("query_last_name")
     @provider.price = params.fetch("query_price")
-    @provider.image = params.fetch(:image)
+
+    if params.fetch(:image) != nil
+      @provider.image = params.fetch(:image)
+    else
+    end
+
     @provider.description = params.fetch("query_description")
     @provider.reviews_count = params.fetch("query_reviews_count")
     @provider.spoken_languages_count = params.fetch("query_spoken_languages_count")

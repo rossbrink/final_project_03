@@ -171,5 +171,8 @@ Rails.application.routes.draw do
 
   # PROVIDER EDIT PROFILE
   get("/provider/:path_id/edit", { :controller => "provider", :action => "profile_edit"})
+
+  # ALL SIGN IN SPLITTER
+  get("/sign_in_split", { :controller => "application", :action => "sign_in_split"})
   
 end

@@ -13,8 +13,8 @@
 </div>
 
 <div>
-  <% if @current_user == nil %>
-    <a href="/user_sign_in">
+  <% if @current_user == nil && @current_provider == nil %>
+    <a href="/sign_in_split">
       <button class="button">Sign in to email</button>
     </a>
   <% else %>

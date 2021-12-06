@@ -20,13 +20,13 @@ class AreasController < ApplicationController
   def create
     the_area = Area.new
     the_area.neighborhood_id = params.fetch("query_neighborhood_id")
-    the_area.provider_id = params.fetch("query_provider_id")
+    the_area.provider_id = @current_provider.id
 
     if the_area.valid?
       the_area.save
-      redirect_to("/areas", { :notice => "Area created successfully." })
+      redirect_to("/provider/#{the_area.provider_id}/edit", { :notice => "Area created successfully." })
     else
-      redirect_to("/areas", { :notice => "Area failed to create successfully." })
+      redirect_to("/provider/#{the_area.provider_id}/edit", { :notice => "Area failed to create successfully." })
     end
   end
 
@@ -51,6 +51,6 @@ class AreasController < ApplicationController
 
     the_area.destroy
 
-    redirect_to("/areas", { :notice => "Area deleted successfully."} )
+    redirect_to("/provider/#{the_area.provider_id}/edit", { :notice => "Area deleted successfully."} )
   end
 end

@@ -61,6 +61,24 @@
 </div>
 
 <h3>
+  Neighborhoods Served
+</h3>
+
+<div>
+  <table>
+    <% @the_provider.neighborhoods.each do |a_neighborhood| %>
+
+      <tr>
+        <td>
+          <%= a_neighborhood.name %>
+        </td>
+      <tr>
+
+    <% end %>
+  </table>
+</div>
+
+<h3>
   Special Needs Served
 </h3>
 

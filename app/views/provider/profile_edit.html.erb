@@ -97,6 +97,39 @@
 </div>
 
 
+<% Neighborhood.all.each do |a_neighborhood|%>
+  <form action="/insert_area" method="post">
+    <label for="neighborhood_<%= a_neighborhood.id %>"></label>
+    <input id="neighborhood_<%= a_neighborhood.id %>" type="hidden" name="query_neighborhood_id" value="<%= a_neighborhood.id %>">
+
+    <button><%= a_neighborhood.name %></button>
+  </form>
+<% end %>
+
+<h3>
+  Neighborhoods you serve
+</h3>
+
+<div>
+  <table>
+    <% @the_provider.areas.each do |a_area| %>
+
+      <tr>
+        <td>
+          <%= a_area.neighborhood.name %>
+        </td>
+
+        <td>
+          <a href="/delete_area/<%= a_area.id %>">Remove</a>
+        </td>
+      <tr>
+
+    <% end %>
+  </table>
+</div>
+
+
+
 <h3>
   What Special Needs Do You Serve?
 </h3>

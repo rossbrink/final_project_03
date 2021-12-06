@@ -20,7 +20,6 @@ class NeighborhoodsController < ApplicationController
   def create
     the_neighborhood = Neighborhood.new
     the_neighborhood.name = params.fetch("query_name")
-    the_neighborhood.areas_count = params.fetch("query_areas_count")
 
     if the_neighborhood.valid?
       the_neighborhood.save
@@ -35,7 +34,6 @@ class NeighborhoodsController < ApplicationController
     the_neighborhood = Neighborhood.where({ :id => the_id }).at(0)
 
     the_neighborhood.name = params.fetch("query_name")
-    the_neighborhood.areas_count = params.fetch("query_areas_count")
 
     if the_neighborhood.valid?
       the_neighborhood.save

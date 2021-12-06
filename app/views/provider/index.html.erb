@@ -12,7 +12,7 @@
 
   <div>
     <%= f.label :languages_name_cont, "Language" %>
-    <%= f.text_field :languages_name_cont %>
+    <%= f.select :languages_name_cont, options_from_collection_for_select(Language.all, :name, :name, @q.languages_name_cont), { :include_blank => true } %>
   </div>
 
   <div>
@@ -22,7 +22,7 @@
 
   <div>
     <%= f.label :neighborhoods_name_cont, "Neighborhood" %>
-    <%= f.text_field :neighborhoods_name_cont %>
+    <%= f.select :neighborhoods_name_cont, options_from_collection_for_select(Neighborhood.all, :name, :name, @q.neighborhoods_name_cont), { :include_blank => true } %>
   </div>
 
   <%= f.submit :class => "btn btn-primary btn-block" %>

@@ -89,14 +89,14 @@ class ProviderAuthenticationController < ApplicationController
     @provider.description = params.fetch("query_description")
     @provider.reviews_count = params.fetch("query_reviews_count")
     @provider.spoken_languages_count = params.fetch("query_spoken_languages_count")
-    @provider.services_count = params.fetch("query_services_count")
+    # @provider.services_count = params.fetch("query_services_count")
     
     if @provider.valid?
       @provider.save
 
       redirect_to("/provider/#{@current_provider.id}/edit", { :notice => "Provider account updated successfully."})
     else
-      render({ :template => "provider_authentication/edit_profile_with_errors.html.erb" })
+      redirect_to("/provider/#{@current_provider.id}/edit", { :alert => "Provider account NOT updated successfully."})
     end
   end
 

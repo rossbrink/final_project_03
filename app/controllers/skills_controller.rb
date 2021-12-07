@@ -24,9 +24,9 @@ class SkillsController < ApplicationController
 
     if the_skill.valid?
       the_skill.save
-      redirect_to("/skills", { :notice => "Skill created successfully." })
+      redirect_to("/provider/#{the_skill.provider_id}/edit", { :notice => "Skill created successfully." })
     else
-      redirect_to("/skills", { :notice => "Skill failed to create successfully." })
+      redirect_to("/provider/#{the_skill.provider_id}/edit", { :notice => "Skill failed to create successfully." })
     end
   end
 

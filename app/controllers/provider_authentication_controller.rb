@@ -3,7 +3,6 @@ class ProviderAuthenticationController < ApplicationController
   # skip_before_action(:force_provider_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
   skip_before_action(:force_all_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
 
-
   def sign_in_form
     render({ :template => "provider_authentication/sign_in.html.erb" })
   end
@@ -75,11 +74,17 @@ class ProviderAuthenticationController < ApplicationController
     @provider.first_name = params.fetch("query_first_name")
     @provider.last_name = params.fetch("query_last_name")
     @provider.price = params.fetch("query_price")
+    # @provider.image = params.fetch(:image)
 
-    if params.fetch(:image) != nil
+    if params.has_key?(:image)
       @provider.image = params.fetch(:image)
     else
     end
+
+    # if params.fetch(:image) != nil
+    #   @provider.image = params.fetch(:image)
+    # else
+    # end
 
     @provider.description = params.fetch("query_description")
     @provider.reviews_count = params.fetch("query_reviews_count")

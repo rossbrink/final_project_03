@@ -1,5 +1,7 @@
 class ImageUploader < CarrierWave::Uploader::Base
 
+  require 'carrierwave/orm/activerecord'
+
   # include Cloudinary::CarrierWave
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

@@ -101,6 +101,24 @@
 </div>
 
 <h3>
+  Skills
+</h3>
+
+<div>
+  <table>
+    <% @the_provider.skills.each do |a_skill| %>
+
+      <tr>
+        <td>
+          <%= a_skill.task.name %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+
+<h3>
   Reviews
 </h3>
 

@@ -15,10 +15,6 @@
     <%= f.select :languages_name_cont, options_from_collection_for_select(Language.all, :name, :name, @q.languages_name_cont), { :include_blank => true } %>
   </div>
 
-  <div>
-    <%= f.label :needs_name_cont, "Special Needs Served" %>
-    <%= f.text_field :needs_name_cont %>
-  </div>
 
   <div>
     <%= f.label :neighborhoods_name_cont, "Neighborhood" %>

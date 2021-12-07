@@ -166,6 +166,43 @@
   </table>
 </div>
 
+
+<h3>
+  What Skills Do You Have?
+</h3>
+
+<% Task.all.each do |a_task|%>
+  <form action="/insert_skill" method="post">
+    <label for="task_<%= a_task.id %>"></label>
+    <input id="task_<%= a_task.id %>" type="hidden" name="query_task_id" value="<%= a_task.id %>">
+
+    <button><%= a_task.name %></button>
+  </form>
+<% end %>
+
+
+<h3>
+  Skills
+</h3>
+
+<div>
+  <table>
+    <% @the_provider.skills.each do |a_skill| %>
+
+      <tr>
+        <td>
+          <%= a_skill.task.name %>
+        </td>
+
+        <td>
+          <a href="/delete_skill/<%= a_skill.id %>">Remove</a>
+        </td>
+      <tr>
+
+    <% end %>
+  </table>
+</div>
+
 <div>
   <form action="/provider/<%= @current_provider.id %>">
     <button>Done</button>

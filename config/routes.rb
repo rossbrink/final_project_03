@@ -1,5 +1,43 @@
 Rails.application.routes.draw do
 
+  # Routes for the Skill resource:
+
+  # CREATE
+  post("/insert_skill", { :controller => "skills", :action => "create" })
+          
+  # READ
+  get("/skills", { :controller => "skills", :action => "index" })
+  
+  get("/skills/:path_id", { :controller => "skills", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_skill/:path_id", { :controller => "skills", :action => "update" })
+  
+  # DELETE
+  get("/delete_skill/:path_id", { :controller => "skills", :action => "destroy" })
+
+  #------------------------------
+
+  # Routes for the Task resource:
+
+  # CREATE
+  post("/insert_task", { :controller => "tasks", :action => "create" })
+          
+  # READ
+  get("/tasks", { :controller => "tasks", :action => "index" })
+  
+  get("/tasks/:path_id", { :controller => "tasks", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_task/:path_id", { :controller => "tasks", :action => "update" })
+  
+  # DELETE
+  get("/delete_task/:path_id", { :controller => "tasks", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Area resource:
 
   # CREATE

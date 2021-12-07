@@ -34,6 +34,9 @@ class Provider < ApplicationRecord
   has_many(:areas, { :class_name => "Area", :foreign_key => "provider_id", :dependent => :destroy })
   has_many(:neighborhoods, { :through => :areas, :source => :neighborhood })
 
+  has_many(:skills, { :class_name => "Skill", :foreign_key => "provider_id", :dependent => :destroy })
+  has_many(:tasks, { :through => :skills, :source => :task })
+
   def full_name
     first = self.first_name
     last = self.last_name

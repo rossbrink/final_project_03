@@ -26,9 +26,9 @@
     <%= f.select :neighborhoods_name_cont, options_from_collection_for_select(Neighborhood.all, :name, :name, @q.neighborhoods_name_cont), { :include_blank => true } %>
   </div>
 
-  <%= f.submit :class => "btn btn-primary btn-block" %>
+  <%= f.submit :class => "btn btn-success" %>
   
-  <a href="/">Clear filters</a>
+  <a href="/" class="btn btn-warning">Clear filters</a>
 <% end %>
 
 

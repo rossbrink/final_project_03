@@ -220,7 +220,7 @@ need.save
 # # ADD PROVIDERS
 Provider.destroy_all
 
-5.times do
+50.times do
   provider = Provider.new
   provider.description = Faker::Restaurant.description
   provider.first_name = Faker::Name.first_name
@@ -245,28 +245,28 @@ Provider.destroy_all
   lang.language_id = rand(0..5)
   lang.save
 
-  3.times do 
+  5.times do 
     hood = Area.new
     hood.provider_id = provider.id
     hood.neighborhood_id = rand(1..5)
     hood.save
   end
 
-  3.times do 
+  5.times do 
     skill = Skill.new
     skill.provider_id = provider.id
     skill.task_id = rand(1..5)
     skill.save
   end
 
-  3.times do 
+  5.times do 
     service = Service.new
     service.provider_id = provider.id
     service.need_id = rand(1..5)
     service.save
   end
 
-  3.times do 
+  5.times do 
     review = Review.new
     review.provider_id = provider.id
     review.title = Faker::Marketing.buzzwords.capitalize
@@ -275,7 +275,7 @@ Provider.destroy_all
     review.save
   end
 
-  3.times do 
+  5.times do 
     pay_acc = PaymentAccepted.new
     pay_acc.provider_id = provider.id
     pay_acc.payment_type_id = rand(1..5)

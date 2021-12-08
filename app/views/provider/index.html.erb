@@ -1,109 +1,88 @@
-<form name="search_bar">
+<div class="bg-light" style="padding: 200px 0px 200px 0px">
+  <div class="container">
 
-  <div class="container" style="padding: 100px 10px 100px 0px">
-    <div>
+
       <h1>
         Local care for your child with special needs.
       </h1>
-    </div>
 
-    <div class="form-row" style="padding-top: 30px">
 
-      <!--<div class="col">
+
+    <form class="bg-white">
+      <div class="form-inline d-flex justify-content-between" style="margin-top: 30px">
+        
         <%= search_form_for(@q, url: "/", method: :get) do |f| %>
-        <p>Search Care Providers:</p>
-      </div>-->
 
-      <div class="col">
-        <%#= f.label :price_gteq, "Min Price", :class => "form-control" %>
-        <%= f.text_field :price_gteq, :class => "form-control rounded-0", :placeholder => "Min $" %>
-      </div>
+          <div>
+            <%= f.text_field :price_gteq, :class => "form-control border-0 rounded-0", :placeholder => "Min $/hr" %>
+          </div>
 
-      <div class="col">
-        <%#= f.label :price_lteq, "Max Price", :class => "form-control" %>
-        <%= f.text_field :price_lteq, :class => "form-control rounded-0", :placeholder => "Max $" %>
-      </div>
+          <div>
+            <%= f.text_field :price_lteq, :class => "form-control border-0 rounded-0", :placeholder => "Max $/hr" %>
+          </div>
 
-      <div class="col">
-          <%= f.select :languages_name_cont, options_from_collection_for_select(Language.all, :name, :name, @q.languages_name_cont), { :prompt => "Language" }, { :class => 'form-control rounded-0' } %>
-      </div>
+          <div>
+              <%= f.select :languages_name_cont, options_from_collection_for_select(Language.all, :name, :name, @q.languages_name_cont), { :prompt => "Language" }, { :class => 'form-control border-0 rounded-0' } %>
+          </div>
 
-      <div class="col">
-        <%= f.select :neighborhoods_name_cont, options_from_collection_for_select(Neighborhood.all, :name, :name, @q.neighborhoods_name_cont), { :prompt => "Neighborhood" }, { :class => 'form-control rounded-0' } %>
-      </div>
+          <div>
+            <%= f.select :neighborhoods_name_cont, options_from_collection_for_select(Neighborhood.all, :name, :name, @q.neighborhoods_name_cont), { :prompt => "Neighborhood" }, { :class => 'form-control border-0 rounded-0' } %>
+          </div>
 
-      <div class="col">      
-        <%= f.submit :class => "btn btn-success rounded-0" %>
+          <div>      
+            <%= f.submit :class => "btn btn-success border-0 rounded-0" %>
+          </div>
+
+        <% end %>
+        
       </div>
-      
-      <!--<div class="col">        
-        <a href="/" class="btn btn-warning">Clear filters</a>
-      </div>-->
-    </div>
+    </form>
+
   </div>
-<% end %>
-</form>
+</div>
+
+  
 
 
 
-<table border="1">
-  <tr>
-    <th>
-      Image
-    </th>
+<div class="container" style="padding-top: 100px">
+  <table class="table table-borderless">
+    <% @providers.each do |provider| %>
+    
+      <tr>
+        <td>
+          <img src="<%= provider.image %>" width="250px">
+        </td>
 
-    <th>
-      Name
-    </th>
+        <td>
+          <%= provider.full_name %>
+        </td>
 
-    <th>
-      Price
-    </th>
+        <td>
+          $<%= provider.price.to_i %>/hr
+        </td>
 
-    <th>
-      Languages
-    </th>
+        <td>
+          <% provider.spoken_languages.each do |a_spoken_language| %>
+              <%= a_spoken_language.language.name %>
+          <% end %>
+        </td>
 
-    <th>
-      Services
-    </th>
+        <td>
+          <% provider.services.each do |a_service| %>
+              <%= a_service.need.name %>
+          <% end %>
+        </td>
 
-    <th>
-      Link
-    </th>
-  </tr>
+        <td>
+          <a href="/provider/<%= provider.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+    
+    <% end %>
 
-  <% @providers.each do |provider| %>
-  <tr>
-    <td>
-      <img src="<%= provider.image %>" width="250px">
-    </td>
+  </table>
 
-    <td>
-      <%= provider.full_name %>
-    </td>
-
-    <td>
-      $<%= provider.price.to_i %>/hr
-    </td>
-
-    <td>
-      <% provider.spoken_languages.each do |a_spoken_language| %>
-          <%= a_spoken_language.language.name %>
-      <% end %>
-    </td>
-
-    <td>
-      <% provider.services.each do |a_service| %>
-          <%= a_service.need.name %>
-      <% end %>
-    </td>
-
-    <td>
-      <a href="/provider/<%= provider.id %>">
-        Show details
-      </a>
-    </td>
-  </tr>
-  <% end %>
-</table>
+</div>

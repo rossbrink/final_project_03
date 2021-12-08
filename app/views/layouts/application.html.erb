@@ -35,77 +35,82 @@
   </head>
 
   <body>
-    <nav>
-      <ul>
-      <li>
-        <a href="/">
-          Home
-        </a>
-      </li>
-
-      <% if @current_provider == nil && @current_user == nil %>
-      <li>
-        <a href="/provider_sign_up">
-          Provider Sign Up
-        </a>
-
-        <%# <label for="sign_in">Sign In</label>
-
-          <select name="query_sign_in_type" id="sign_in" onchange="location this.value;">
-            <option value="user_authentication/sign_in.html.erb">User</option>
-            <option value="provider_authentication/sign_in.html.erb">Care Provider</option>
-          </select> %>
-      </li>
-
-      <li>
-        <a href="/provider_sign_in">
-          Provider Sign In
-        </a>
-      </li>
-
-      <li>
-        <a href="/user_sign_up">
-          User Sign Up
-        </a>
-      </li>
-
-      <li>
-        <a href="/user_sign_in">
-          User Sign In
-        </a>
-      </li>
-
-      <% elsif @current_provider != nil %>
-      <li>
-        <a href="/provider_sign_out">
-          Provider Sign Out
-        </a>
-      </li>
-
-      <li>
-        <a href="/provider/<%= @current_provider.id %>">
-          <%= @current_provider.first_name %>
-        </a>
-      </li>
-
-      <% elsif @current_user != nil %>
-      <li>
-        <a href="/user_sign_out">
-          User Sign Out
-        </a>
-      </li>
-
-      <li>
-        <a href="/user/<%= @current_user.id %>">
-          <%= @current_user.first_name %>
-        </a>
-      </li>
-      <% else %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-success text-white">
+      <a class="navbar-brand" href="/">
+        <img class="fas fa-hand-holding-heart">
+      </a>
       
-      <% end %>
-      </ul>
+        <div class="collapse navbar-collapse navbar-nav" id="navbarSupportedContent">
+            <% if @current_provider == nil && @current_user == nil %>
+              <% elsif @current_provider != nil %>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/provider/<%= @current_provider.id %>"><%= @current_provider.first_name %><span class="sr-only">(current)</span></a>
+                </li>
+              <% elsif @current_user != nil %>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/user/<%= @current_user.id %>"><%= @current_user.first_name %><span class="sr-only">(current)</span></a>
+                </li>
+              <% end %>
 
+              <% if @current_provider == nil && @current_user == nil %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                  Sign In
+                </a>
+              
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/user_sign_in">User</a>
+                  <a class="dropdown-item" href="/provider_sign_in">Provider</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/user_sign_up">User Sign Up</a>
+                  <a class="dropdown-item" href="/provider_sign_up">Provider Sign Up</a>
+                </div>
+              <% else %>
+              <% end %>
+          </div>
     </nav>
+    <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <div class="row justify-content-center-between">
+        <div class="col-4">
+          <a class="navbar-brand" href="/">
+            <strong>HUG</strong>
+            <%# <img class="fas fa-poo" alt=""> %>
+          </a>
+        </div>
+        <div class="col-4">
+          <div class="collapse navbar-collapse navbar-nav" id="navbarSupportedContent">
+            <% if @current_provider == nil && @current_user == nil %>
+              <% elsif @current_provider != nil %>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/provider/<%= @current_provider.id %>"><%= @current_provider.first_name %><span class="sr-only">(current)</span></a>
+                </li>
+              <% elsif @current_user != nil %>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/user/<%= @current_user.id %>"><%= @current_user.first_name %><span class="sr-only">(current)</span></a>
+                </li>
+              <% end %>
+
+              <% if @current_provider == nil && @current_user == nil %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                  Sign In
+                </a>
+              
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/user_sign_in">User</a>
+                  <a class="dropdown-item" href="/provider_sign_in">Provider</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/user_sign_up">User Sign Up</a>
+                  <a class="dropdown-item" href="/provider_sign_up">Provider Sign Up</a>
+                </div>
+              <% else %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    </nav>-->
 
     <%= flash[:notice] %>
     <%= flash[:alert] %>

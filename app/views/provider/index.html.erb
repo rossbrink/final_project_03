@@ -6,7 +6,12 @@
   <p>Search Care Providers:</p>
 
   <div>
-    <%= f.label :price_lteq, "Price" %>
+    <%= f.label :price_gteq, "Min Price" %>
+    <%= f.text_field :price_gteq %>
+  </div>
+
+  <div>
+    <%= f.label :price_lteq, "Max Price" %>
     <%= f.text_field :price_lteq %>
   </div>
 
@@ -65,7 +70,7 @@
     </td>
 
     <td>
-      <%= provider.price %>
+      $<%= provider.price.to_i %>/hr
     </td>
 
     <td>

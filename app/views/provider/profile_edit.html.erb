@@ -1,13 +1,14 @@
 <h1>
-  <%= @current_provider.first_name %>, edit your profile.
+  <%= @current_provider.full_name %>, edit your profile.
 </h1>
 
 
   <div>
     <form action="/modify_provider" method="post" enctype="multipart/form-data">
       <div>
-        <label for="email_box">Email</label>
-        <input id="email_box" name="query_email" value="<%= @current_provider.email %>">
+        <label for="image_box">Image</label>
+          <img src="<%= @current_provider.image %>" class="img-responsive" width="250px">
+        <input type="file" id="image_box" name="image" class="form-control">
       </div>
       <div>
         <label for="first_name_box">First name</label>
@@ -18,25 +19,16 @@
         <input id="last_name_box" name="query_last_name" value="<%= @current_provider.last_name %>">
       </div>
       <div>
-        <label for="price_box">Price</label>
-        <input id="price_box" name="query_price" value="<%= @current_provider.price %>">
+        <label for="email_box">Email</label>
+        <input id="email_box" name="query_email" value="<%= @current_provider.email %>">
       </div>
       <div>
-        <label for="image_box">Image</label>
-          <img src="<%= @current_provider.image %>" class="img-responsive" width="250px">
-        <input type="file" id="image_box" name="image" class="form-control">
+        <label for="price_box">Price/hr</label>
+        <input id="price_box" name="query_price" value="<%= @current_provider.price.to_i %>">
       </div>
       <div>
         <label for="description_box">Description</label>
-        <input id="description_box" name="query_description" value="<%= @current_provider.description %>">
-      </div>
-      <div>
-        <label for="reviews_count_box">Reviews count</label>
-        <input id="reviews_count_box" name="query_reviews_count" value="<%= @current_provider.reviews_count %>">
-      </div>
-      <div>
-        <label for="spoken_languages_count_box">Spoken languages count</label>
-        <input id="spoken_languages_count_box" name="query_spoken_languages_count" value="<%= @current_provider.spoken_languages_count %>">
+        <textarea id="description_box" name="query_description" value="<%= @current_provider.description %>"></textarea>
       </div>
 
       <div>
@@ -91,6 +83,9 @@
   </table>
 </div>
 
+<h3>
+  Neighborhoods you serve
+</h3>
 
 <% Neighborhood.all.each do |a_neighborhood|%>
   <form action="/insert_area" method="post">
@@ -100,10 +95,6 @@
     <button><%= a_neighborhood.name %></button>
   </form>
 <% end %>
-
-<h3>
-  Neighborhoods you serve
-</h3>
 
 <div>
   <table>

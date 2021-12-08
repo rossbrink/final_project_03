@@ -11,4 +11,7 @@
 class PaymentAccepted < ApplicationRecord
   belongs_to(:provider, { :required => true, :class_name => "Provider", :foreign_key => "provider_id" })
   belongs_to(:payment_type, { :required => true, :class_name => "PaymentType", :foreign_key => "payment_type_id" })
+
+  validates(:payment_type_id, { :uniqueness => { :scope => [:provider_id] }})
+
 end

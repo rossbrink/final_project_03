@@ -19,6 +19,7 @@
 class Provider < ApplicationRecord
   validates :email, :uniqueness => { :case_sensitive => false }
   validates :email, :presence => true
+  validates :price, numericality: { only_integer: true }
   has_secure_password
 
   mount_uploader :image, ImageUploader

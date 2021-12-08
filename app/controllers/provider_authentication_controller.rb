@@ -87,8 +87,8 @@ class ProviderAuthenticationController < ApplicationController
     # end
 
     @provider.description = params.fetch("query_description")
-    @provider.reviews_count = params.fetch("query_reviews_count")
-    @provider.spoken_languages_count = params.fetch("query_spoken_languages_count")
+    # @provider.reviews_count = params.fetch("query_reviews_count")
+    # @provider.spoken_languages_count = params.fetch("query_spoken_languages_count")
     # @provider.services_count = params.fetch("query_services_count")
     
     if @provider.valid?

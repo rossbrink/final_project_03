@@ -269,10 +269,17 @@ Provider.destroy_all
   3.times do 
     review = Review.new
     review.provider_id = provider.id
-    review.title = Faker::Company.name
+    review.title = Faker::Marketing.buzzwords.capitalize
     review.author_id = rand(1..5)
     review.description = Faker::Restaurant.review
     review.save
+  end
+
+  3.times do 
+    pay_acc = PaymentAccepted.new
+    pay_acc.provider_id = provider.id
+    pay_acc.payment_type_id = rand(1..5)
+    pay_acc.save
   end
 
   # provider.save
@@ -285,7 +292,7 @@ ross.first_name = "Ross"
 ross.last_name = "Brinkman"
 ross.email = "ross@email.com"
 ross.password = "password"
-ross.price = 14.99
+ross.price = 15
 ross.remote_image_url = "https://i.ibb.co/HCK0xSX/ross2.jpg"
 ross.save
 

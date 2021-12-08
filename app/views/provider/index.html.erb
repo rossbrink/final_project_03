@@ -2,34 +2,42 @@
   Find Local Care For Your Child With Special Needs
 </h1>
 
-<%= search_form_for(@q, url: "/", method: :get) do |f| %>
-  <p>Search Care Providers:</p>
+<form name="search_bar">
+  <div class="form-row">
 
-  <div>
-    <%= f.label :price_gteq, "Min Price" %>
-    <%= f.text_field :price_gteq %>
+      <div class="col">
+        <%= search_form_for(@q, url: "/", method: :get) do |f| %>
+        <p>Search Care Providers:</p>
+      </div>
+
+      <div class="col">
+        <%#= f.label :price_gteq, "Min Price", :class => "form-control" %>
+        <%= f.text_field :price_gteq, :class => "form-control", :placeholder => "Min Price" %>
+      </div>
+
+      <div class="col">
+        <%#= f.label :price_lteq, "Max Price", :class => "form-control" %>
+        <%= f.text_field :price_lteq, :class => "form-control", :placeholder => "Max Price" %>
+      </div>
+
+      <div class="col">
+          <%= f.select :languages_name_cont, options_from_collection_for_select(Language.all, :name, :name, @q.languages_name_cont), { :prompt => "Language" }, { :class => 'form-control' } %>
+      </div>
+
+      <div class="col">
+        <%= f.select :neighborhoods_name_cont, options_from_collection_for_select(Neighborhood.all, :name, :name, @q.neighborhoods_name_cont), { :prompt => "Neighborhood" }, { :class => 'form-control' } %>
+      </div>
+
+      <div class="col">      
+        <%= f.submit :class => "btn btn-success" %>
+      </div>
+      
+      <div class="col">        
+        <a href="/" class="btn btn-warning">Clear filters</a>
+      </div>
   </div>
-
-  <div>
-    <%= f.label :price_lteq, "Max Price" %>
-    <%= f.text_field :price_lteq %>
-  </div>
-
-  <div>
-    <%= f.label :languages_name_cont, "Language" %>
-    <%= f.select :languages_name_cont, options_from_collection_for_select(Language.all, :name, :name, @q.languages_name_cont), { :include_blank => true } %>
-  </div>
-
-
-  <div>
-    <%= f.label :neighborhoods_name_cont, "Neighborhood" %>
-    <%= f.select :neighborhoods_name_cont, options_from_collection_for_select(Neighborhood.all, :name, :name, @q.neighborhoods_name_cont), { :include_blank => true } %>
-  </div>
-
-  <%= f.submit :class => "btn btn-success" %>
-  
-  <a href="/" class="btn btn-warning">Clear filters</a>
 <% end %>
+</form>
 
 
 <table border="1">

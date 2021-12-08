@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Payment type #<%= @the_payment_type.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/payment_types">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_payment_type/<%= @the_payment_type.id %>">
+          Delete payment type
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_payment_type.name %>
+      </dd>
+
+      <dt>
+        Url
+      </dt>
+      <dd>
+        <%= @the_payment_type.url %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_payment_type.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_payment_type.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit payment type
+    </h2>
+
+    <form action="/modify_payment_type/<%= @the_payment_type.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_payment_type.name %>">
+      </div>
+
+      <div>
+        <label for="url_box">
+          Url
+        </label>
+
+        <input type="text" id="url_box" name="query_url" value="<%= @the_payment_type.url %>">
+      </div>
+
+      <button>
+        Update payment type
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

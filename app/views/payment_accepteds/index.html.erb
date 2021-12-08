@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all payment accepteds
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new payment accepted
+    </h2>
+
+    <form action="/insert_payment_accepted" method="post">
+      <div>
+        <label for="payment_type_id_box">
+          Payment type
+        </label>
+
+        <input type="text" id="payment_type_id_box" name="query_payment_type_id">
+      </div>
+
+      <div>
+        <label for="provider_id_box">
+          Provider
+        </label>
+
+        <input type="text" id="provider_id_box" name="query_provider_id">
+      </div>
+
+      <button>
+        Create payment accepted
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Payment type
+        </th>
+
+        <th>
+          Provider
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_payment_accepteds.each do |a_payment_accepted| %>
+      <tr>
+        <td>
+          <%= a_payment_accepted.id %>
+        </td>
+
+        <td>
+          <%= a_payment_accepted.payment_type_id %>
+        </td>
+
+        <td>
+          <%= a_payment_accepted.provider_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_payment_accepted.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_payment_accepted.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/payment_accepteds/<%= a_payment_accepted.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

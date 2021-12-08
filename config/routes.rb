@@ -1,5 +1,43 @@
 Rails.application.routes.draw do
 
+  # Routes for the Payment type resource:
+
+  # CREATE
+  post("/insert_payment_type", { :controller => "payment_types", :action => "create" })
+          
+  # READ
+  get("/payment_types", { :controller => "payment_types", :action => "index" })
+  
+  get("/payment_types/:path_id", { :controller => "payment_types", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_payment_type/:path_id", { :controller => "payment_types", :action => "update" })
+  
+  # DELETE
+  get("/delete_payment_type/:path_id", { :controller => "payment_types", :action => "destroy" })
+
+  #------------------------------
+
+  # Routes for the Payment accepted resource:
+
+  # CREATE
+  post("/insert_payment_accepted", { :controller => "payment_accepteds", :action => "create" })
+          
+  # READ
+  get("/payment_accepteds", { :controller => "payment_accepteds", :action => "index" })
+  
+  get("/payment_accepteds/:path_id", { :controller => "payment_accepteds", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_payment_accepted/:path_id", { :controller => "payment_accepteds", :action => "update" })
+  
+  # DELETE
+  get("/delete_payment_accepted/:path_id", { :controller => "payment_accepteds", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Skill resource:
 
   # CREATE
@@ -250,5 +288,13 @@ Rails.application.routes.draw do
 
   # ALL SIGN IN SPLITTER
   get("/sign_in_split", { :controller => "application", :action => "sign_in_split"})
+
+  # CHECKBOX TEST
+  root to: 'provider#profile_edit'
+  resources :language do
+    collection do
+      post :add
+    end
+  end
   
 end

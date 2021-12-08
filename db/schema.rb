@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_055126) do
+ActiveRecord::Schema.define(version: 2021_12_08_020424) do
 
   create_table "areas", force: :cascade do |t|
     t.integer "neighborhood_id"
@@ -36,6 +36,20 @@ ActiveRecord::Schema.define(version: 2021_12_07_055126) do
 
   create_table "neighborhoods", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "payment_accepteds", force: :cascade do |t|
+    t.integer "payment_type_id"
+    t.integer "provider_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "payment_types", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -37,6 +37,9 @@ class Provider < ApplicationRecord
   has_many(:skills, { :class_name => "Skill", :foreign_key => "provider_id", :dependent => :destroy })
   has_many(:tasks, { :through => :skills, :source => :task })
 
+  has_many(:payment_accepteds, { :class_name => "PaymentAccepted", :foreign_key => "provider_id", :dependent => :destroy })
+  has_many(:payment_types, { :through => :payment_accepteds, :source => :payment_type })
+
   def full_name
     first = self.first_name
     last = self.last_name

@@ -202,6 +202,42 @@
   </table>
 </div>
 
+<h3>
+  What payments do you accept?
+</h3>
+
+<% PaymentType.all.each do |a_payment|%>
+  <form action="/insert_payment_accepted" method="post">
+    <label for="payment_<%= a_payment.id %>"></label>
+    <input id="payment_<%= a_payment.id %>" type="hidden" name="query_payment_type_id" value="<%= a_payment.id %>">
+
+    <button><%= a_payment.name %></button>
+  </form>
+<% end %>
+
+
+<h3>
+  Payment Types Accepted
+</h3>
+
+<div>
+  <table>
+    <% @the_provider.payment_accepteds.each do |a_payment_acc| %>
+
+      <tr>
+        <td>
+          <%= a_payment_acc.payment_type.name %>
+        </td>
+
+        <td>
+          <a href="/delete_payment_accepted/<%= a_payment_acc.id %>">Remove</a>
+        </td>
+      <tr>
+
+    <% end %>
+  </table>
+</div>
+
 <div>
   <form action="/provider/<%= @current_provider.id %>">
     <button>Done</button>

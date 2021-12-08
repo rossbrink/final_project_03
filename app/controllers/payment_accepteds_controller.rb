@@ -20,13 +20,13 @@ class PaymentAcceptedsController < ApplicationController
   def create
     the_payment_accepted = PaymentAccepted.new
     the_payment_accepted.payment_type_id = params.fetch("query_payment_type_id")
-    the_payment_accepted.provider_id = params.fetch("query_provider_id")
+    the_payment_accepted.provider_id = @current_provider.id
 
     if the_payment_accepted.valid?
       the_payment_accepted.save
-      redirect_to("/payment_accepteds", { :notice => "Payment accepted created successfully." })
+      redirect_to("/provider/#{the_payment_accepted.provider_id}/edit", { :notice => "Payment accepted created successfully." })
     else
-      redirect_to("/payment_accepteds", { :notice => "Payment accepted failed to create successfully." })
+      redirect_to("/provider/#{the_payment_accepted.provider_id}/edit", { :notice => "Payment accepted failed to create successfully." })
     end
   end
 
@@ -51,6 +51,6 @@ class PaymentAcceptedsController < ApplicationController
 
     the_payment_accepted.destroy
 
-    redirect_to("/payment_accepteds", { :notice => "Payment accepted deleted successfully."} )
+    redirect_to("/provider/#{the_payment_accepted.provider_id}/edit", { :notice => "Payment accepted deleted successfully."} )
   end
 end

@@ -117,6 +117,23 @@
   </table>
 </div>
 
+<h3>
+  Payment Types Accepted
+</h3>
+
+<div>
+  <table>
+    <% @the_provider.payment_accepteds.each do |a_payment_acc| %>
+
+      <tr>
+        <td>
+          <%= a_payment_acc.payment_type.name %>
+        </td>
+
+    <% end %>
+  </table>
+</div>
+
 
 <h3>
   Reviews

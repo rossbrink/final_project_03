@@ -45,6 +45,43 @@ jimmy.email = "jimmy@email.com"
 jimmy.password = "password"
 jimmy.save
 
+PaymentType.destroy_all
+
+# CASH
+cash = PaymentType.new
+cash.id = 1
+cash.name = "Cash"
+cash.url = "https://en.wikipedia.org/wiki/Cash"
+cash.save
+
+# CHECK
+check = PaymentType.new
+check.id = 2
+check.name = "Check"
+# check.url = "https://en.wikipedia.org/wiki/Cash"
+check.save
+
+# VENMO
+venmo = PaymentType.new
+venmo.id = 3
+venmo.name = "Venmo"
+venmo.url = "https://venmo.com/"
+venmo.save
+
+# PAYPAL
+paypal = PaymentType.new
+paypal.id = 4
+paypal.name = "Paypal"
+paypal.url = "https://www.paypal.com/us/home"
+paypal.save
+
+# CASH APP
+cashapp = PaymentType.new
+cashapp.id = 5
+cashapp.name = "Cash App"
+cashapp.url = "https://cash.app/"
+cashapp.save
+
 Task.destroy_all
 
 # BABYSITTING
@@ -249,7 +286,7 @@ ross.last_name = "Brinkman"
 ross.email = "ross@email.com"
 ross.password = "password"
 ross.price = 14.99
-ross.remote_image_url = "https://uc54beba0cdf0523087732e1ecd4.previews.dropboxusercontent.com/p/thumb/ABW8tO9npJz-XO3q-cSUxG_TFisH85im8rmQWfpS8pWTKuPsLmmxI14odlvlqvTrCtdyUvcCpvNPaAtB87wbKmzvNJ5uj2lHBFLJf1sqav0tg_sAC_mMdkyXbTHJHWP7dktbltwLqlKgq-_IwV4vT-AYCf8rD2YOxbAliLI7kD77Q_XLaS-RqxWtKJ3wnnWfdRbc1R9ExHWbqt0ROSAbMA4yFDstrqYHK95zVCXoBZpJYhVXbtMIch4ZVLLud0xgCFOHLb-LRtpXUDdZbcpefYRmbclxyK4_gOrbDzggbAejiyx2kkg5WJ6XdPTd8KXCPFjWKoVI6cHvsQ3e7kxyi17Vm5T2Rr-MpL1zitAlXi2oMlWFaDKiUTxTk2JkIATI0ts/p.jpeg"
+ross.remote_image_url = "https://i.ibb.co/HCK0xSX/ross2.jpg"
 ross.save
 
 # wartortle = Provider.new

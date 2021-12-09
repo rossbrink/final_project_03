@@ -5,57 +5,10 @@
     </div>
 
 
+
   <div class="card-body">
-    <form action="/modify_provider" method="post" enctype="multipart/form-data">
-      
-      <div class="form-group">
-        <img src="<%= @current_provider.image %>" class="img-responsive" width="250px">
-        <input class="form-control" type="file" id="image_box" name="image" class="form-control">
-      </div>
 
-      <div class="form-group">
-        <label for="first_name_box">First name</label>
-        <input class="form-control" id="first_name_box" name="query_first_name" value="<%= @current_provider.first_name %>">
-      </div>
-
-      <div class="form-group">
-        <label for="last_name_box">Last name</label>
-        <input class="form-control" id="last_name_box" name="query_last_name" value="<%= @current_provider.last_name %>">
-      </div>
-
-      <div class="form-group">
-        <label for="email_box">Email</label>
-        <input class="form-control" id="email_box" name="query_email" value="<%= @current_provider.email %>">
-      </div>
-
-      <div class="form-group">
-        <label for="price_box">Price/hr</label>
-        <input class="form-control" id="price_box" name="query_price" value="<%= @current_provider.price.to_i %>">
-      </div>
-
-      <div class="form-group">
-        <label for="description_box">Description</label>
-        <textarea class="form-control" id="description_box" name="query_description" value="<%= @current_provider.description %>"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="password_box">Password</label>
-        <input class="form-control" id="password_box" name="query_password" placeholder="Choose a password..." type="password">
-      </div>
-    
-      <div class="form-group">
-        <label for="password_confirmation_box">Password Confirmation</label>
-        <input class="form-control" id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
-      </div>
-
-      <button type="submit" class="btn btn-danger">
-        <strong>Update Account</strong>
-      </button>
-    </form>
-  </div>
-</div>
-
-<div class="container">
+    <div class="container">
 <div class="row row-cols-md-5" style="margin-top: 25px">
 
   <div class="cols mb-4 border-0">
@@ -286,6 +239,63 @@
 
 <div class="d-flex">
   <form action="/provider/<%= @current_provider.id %>">
-    <button type="submit" class="btn btn-danger" style="padding: 10px 30px 10px 30px"><strong>Update Information</strong></button>
+    <button type="submit" class="btn btn-danger" style="padding: 10px 30px 10px 30px; margin-bottom: 50px"><strong>Update Information</strong></button>
   </form>
 </div>
+
+
+<hr>
+
+
+
+
+    <form action="/modify_provider" method="post" enctype="multipart/form-data">
+      
+      <div class="form-group">
+        <img src="<%= @current_provider.image %>" class="img-responsive" width="250px">
+        <input class="form-control" type="file" id="image_box" name="image" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="first_name_box">First name</label>
+        <input class="form-control" id="first_name_box" name="query_first_name" value="<%= @current_provider.first_name %>">
+      </div>
+
+      <div class="form-group">
+        <label for="last_name_box">Last name</label>
+        <input class="form-control" id="last_name_box" name="query_last_name" value="<%= @current_provider.last_name %>">
+      </div>
+
+      <div class="form-group">
+        <label for="email_box">Email</label>
+        <input class="form-control" id="email_box" name="query_email" value="<%= @current_provider.email %>">
+      </div>
+
+      <div class="form-group">
+        <label for="price_box">Price/hr</label>
+        <input class="form-control" id="price_box" name="query_price" value="<%= @current_provider.price.to_i %>">
+      </div>
+
+      <div class="form-group">
+        <label for="description_box">Description</label>
+        <textarea class="form-control" id="description_box" name="query_description" value="<%= @current_provider.description %>"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="password_box">Password</label>
+        <input class="form-control" id="password_box" name="query_password" placeholder="Choose a password..." type="password">
+      </div>
+    
+      <div class="form-group">
+        <label for="password_confirmation_box">Password Confirmation</label>
+        <input class="form-control" id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
+      </div>
+
+      <button type="submit" class="btn btn-danger">
+        <strong>Update Account</strong>
+      </button>
+    </form>
+  </div>
+</div>
+</div>
+

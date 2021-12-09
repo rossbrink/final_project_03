@@ -11,19 +11,25 @@
     </div>
   </div>
 
-<div class="row row-cols-2">
+<div>
 
   <% if @current_user != nil %>
     <% if @current_user.id == @the_user.id %>
-    <div class="col">
+    <div class="col-3">
       <form action="/edit_user_profile" method="get">
         <button class="btn btn-warning" style="width: 100%; margin-top: 10px"><strong>Edit<Strong></button>
       </form>
     </div>
 
-    <div class="col">
+    <div class="col-3">
       <form action="/user_sign_out" method="get">
-        <button class="btn btn-warning" style="width: 100%; margin-top: 10px"><strong>Sign Out</strong></button>
+        <button class="btn btn-danger" style="width: 100%; margin-top: 10px"><strong>Sign Out</strong></button>
+      </form>
+    </div>
+
+    <div class="col-3">
+      <form action="/cancel_user_account" method="get">
+        <button class="btn btn-dark" style="width: 100%; margin-top: 10px"><strong>Cancel Account</strong></button>
       </form>
     </div>
     <% else %>

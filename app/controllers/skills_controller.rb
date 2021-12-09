@@ -51,6 +51,6 @@ class SkillsController < ApplicationController
 
     the_skill.destroy
 
-    redirect_to("/skills", { :notice => "Skill deleted successfully."} )
+    redirect_to("/provider/#{the_skill.provider_id}/edit", { :notice => "Skill deleted successfully."} )
   end
 end

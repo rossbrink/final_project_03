@@ -1,236 +1,291 @@
-<h1>
-  <%= @current_provider.full_name %>, edit your profile.
-</h1>
+<div class="container" style="margin-top: 100px">
+  <div class="card">
+    <div class="card-header bg-danger text-white">
+      <strong><%= @current_provider.first_name %>, edit your profile.</strong>
+    </div>
 
 
-  <div>
+  <div class="card-body">
     <form action="/modify_provider" method="post" enctype="multipart/form-data">
-      <div>
-        <label for="image_box">Image</label>
-          <img src="<%= @current_provider.image %>" class="img-responsive" width="250px">
-        <input type="file" id="image_box" name="image" class="form-control">
-      </div>
-      <div>
-        <label for="first_name_box">First name</label>
-        <input id="first_name_box" name="query_first_name" value="<%= @current_provider.first_name %>">
-      </div>
-      <div>
-        <label for="last_name_box">Last name</label>
-        <input id="last_name_box" name="query_last_name" value="<%= @current_provider.last_name %>">
-      </div>
-      <div>
-        <label for="email_box">Email</label>
-        <input id="email_box" name="query_email" value="<%= @current_provider.email %>">
-      </div>
-      <div>
-        <label for="price_box">Price/hr</label>
-        <input id="price_box" name="query_price" value="<%= @current_provider.price.to_i %>">
-      </div>
-      <div>
-        <label for="description_box">Description</label>
-        <textarea id="description_box" name="query_description" value="<%= @current_provider.description %>"></textarea>
+      
+      <div class="form-group">
+        <img src="<%= @current_provider.image %>" class="img-responsive" width="250px">
+        <input class="form-control" type="file" id="image_box" name="image" class="form-control">
       </div>
 
-      <div>
+      <div class="form-group">
+        <label for="first_name_box">First name</label>
+        <input class="form-control" id="first_name_box" name="query_first_name" value="<%= @current_provider.first_name %>">
+      </div>
+
+      <div class="form-group">
+        <label for="last_name_box">Last name</label>
+        <input class="form-control" id="last_name_box" name="query_last_name" value="<%= @current_provider.last_name %>">
+      </div>
+
+      <div class="form-group">
+        <label for="email_box">Email</label>
+        <input class="form-control" id="email_box" name="query_email" value="<%= @current_provider.email %>">
+      </div>
+
+      <div class="form-group">
+        <label for="price_box">Price/hr</label>
+        <input class="form-control" id="price_box" name="query_price" value="<%= @current_provider.price.to_i %>">
+      </div>
+
+      <div class="form-group">
+        <label for="description_box">Description</label>
+        <textarea class="form-control" id="description_box" name="query_description" value="<%= @current_provider.description %>"></textarea>
+      </div>
+
+      <div class="form-group">
         <label for="password_box">Password</label>
-        <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
+        <input class="form-control" id="password_box" name="query_password" placeholder="Choose a password..." type="password">
       </div>
     
-      <div>
+      <div class="form-group">
         <label for="password_confirmation_box">Password Confirmation</label>
-        <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
+        <input class="form-control" id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
       </div>
 
-      <button>
-        Update account
+      <button type="submit" class="btn btn-success">
+        <strong>Update Account</strong>
       </button>
     </form>
   </div>
 </div>
 
-<h3>
-  What language do you speak?
-</h3>
+<div class="container">
+<div class="row row-cols-md-5" style="margin-top: 25px">
 
-<% Language.all.each do |a_language|%>
-  <form action="/insert_spoken_language" method="post">
-    <label for="language_<%= a_language.id %>"></label>
-    <input id="language_<%= a_language.id %>" type="hidden" name="query_language_id" value="<%= a_language.id %>">
+  <div class="cols mb-4 border-0">
+    <div class="card border-0 bg-light">
+      <div class="card-header bg-success text-white border-0">
+        What language do you speak?
+      </div>
 
-    <button><%= a_language.name %></button>
-  </form>
-<% end %>
+      <div class="card-body">
+        <% Language.all.each do |a_language|%>
+          <form action="/insert_spoken_language" method="post">
+            <label for="language_<%= a_language.id %>"></label>
+            <input id="language_<%= a_language.id %>" type="hidden" name="query_language_id" value="<%= a_language.id %>">
 
-<h3>
-  Languages you speak
-</h3>
+            <button type="submit" class="btn btn-warning"><%= a_language.name %></button>
+          </form>
+        <% end %>
+      </div>
+    </div>
 
-<div>
-  <table>
-    <% @the_provider.spoken_languages.each do |a_spoken_language| %>
+    <div class="card-header bg-success text-white border-0">
+      Languages you speak
+    </div>
 
-      <tr>
-        <td>
-          <%= a_spoken_language.language.name %>
-        </td>
+    <div class="card-body">
+      <table>
+        <% @the_provider.spoken_languages.each do |a_spoken_language| %>
 
-        <td>
-          <a href="/delete_spoken_language/<%= a_spoken_language.id %>">Remove</a>
-        </td>
-      <tr>
+          <tr>
+            <td>
+              <%= a_spoken_language.language.name %>
+            </td>
 
-    <% end %>
-  </table>
-</div>
+            <td>
+              <a href="/delete_spoken_language/<%= a_spoken_language.id %>">
+                <button class="btn btn-danger">
+                  Remove
+                </button>
+              </a>
+            </td>
+          <tr>
 
-<h3>
-  Neighborhoods you serve
-</h3>
+        <% end %>
+      </table>
+    </div>
+  </div>
 
-<% Neighborhood.all.each do |a_neighborhood|%>
-  <form action="/insert_area" method="post">
-    <label for="neighborhood_<%= a_neighborhood.id %>"></label>
-    <input id="neighborhood_<%= a_neighborhood.id %>" type="hidden" name="query_neighborhood_id" value="<%= a_neighborhood.id %>">
+  <div class="cols mb-4 border-0">
+    <div class="card border-0 bg-light">
+      <div class="card-header bg-success text-white border-0">
+        What neighborhoods do you serve?
+      </div>
 
-    <button><%= a_neighborhood.name %></button>
-  </form>
-<% end %>
+      <div class="card-body">
+        <% Neighborhood.all.each do |a_neighborhood|%>
+          <form action="/insert_area" method="post">
+            <label for="neighborhood_<%= a_neighborhood.id %>"></label>
+            <input id="neighborhood_<%= a_neighborhood.id %>" type="hidden" name="query_neighborhood_id" value="<%= a_neighborhood.id %>">
 
-<div>
-  <table>
-    <% @the_provider.areas.each do |a_area| %>
+            <button type="submit" class="btn btn-warning"><%= a_neighborhood.name %></button>
+          </form>
+        <% end %>
+      </div>
+    </div>
 
-      <tr>
-        <td>
-          <%= a_area.neighborhood.name %>
-        </td>
+    <div class="card-header bg-success text-white border-0">
+      Neighborhoods you serve
+    </div>
 
-        <td>
-          <a href="/delete_area/<%= a_area.id %>">Remove</a>
-        </td>
-      <tr>
+    <div class="card-body">
+      <table>
+        <% @the_provider.areas.each do |a_area| %>
 
-    <% end %>
-  </table>
-</div>
+          <tr>
+            <td>
+              <%= a_area.neighborhood.name %>
+            </td>
 
+            <td>
+              <a href="/delete_area/<%= a_area.id %>">
+                <button class="btn btn-danger">
+                  Remove
+                </button>
+              </a>
+            </td>
+          <tr>
 
+        <% end %>
+      </table>
+    </div>
+  </div>
 
-<h3>
-  What Special Needs Do You Serve?
-</h3>
+  <div class="cols mb-4 border-0">
+    <div class="card border-0 bg-light">
+      <div class="card-header bg-success text-white border-0">
+        What special needs do you serve?
+      </div>
 
-<% Need.all.each do |a_need|%>
-  <form action="/insert_service" method="post">
-    <label for="need_<%= a_need.id %>"></label>
-    <input id="need_<%= a_need.id %>" type="hidden" name="query_need_id" value="<%= a_need.id %>">
+      <div class="card-body">
+        <% Need.all.each do |a_need|%>
+          <form action="/insert_service" method="post">
+            <label for="need_<%= a_need.id %>"></label>
+            <input id="need_<%= a_need.id %>" type="hidden" name="query_need_id" value="<%= a_need.id %>">
 
-    <button><%= a_need.name %></button>
-  </form>
-<% end %>
+            <button type="submit" class="btn btn-warning"><%= a_need.name %></button>
+          </form>
+        <% end %>
+      </div>
+    </div>
 
+    <div class="card-header bg-success text-white border-0">
+      Special needs you serve
+    </div>
 
-<h3>
-  Special Needs You Serve
-</h3>
+    <div class="card-body">
+      <table>
+        <% @the_provider.services.each do |a_service| %>
 
-<div>
-  <table>
-    <% @the_provider.services.each do |a_service| %>
+          <tr>
+            <td>
+              <%= a_service.need.name %>
+            </td>
 
-      <tr>
-        <td>
-          <%= a_service.need.name %>
-        </td>
+            <td>
+              <a href="/delete_service/<%= a_service.id %>">
+                <button class="btn btn-danger">
+                  Remove
+                </button>
+              </a>
+            </td>
+          <tr>
 
-        <td>
-          <%= a_service.need.description %>
-        </td>
+        <% end %>
+      </table>
+    </div>
+  </div>
 
-        <td>
-          <a href="/delete_service/<%= a_service.id %>">Remove</a>
-        </td>
-      <tr>
+  <div class="cols mb-4 border-0">
+    <div class="card border-0 bg-light">
+      <div class="card-header bg-success text-white border-0">
+        What skills do you have?
+      </div>
 
-    <% end %>
-  </table>
-</div>
+      <div class="card-body">
+       <% Task.all.each do |a_task|%>
+          <form action="/insert_skill" method="post">
+            <label for="task_<%= a_task.id %>"></label>
+            <input id="task_<%= a_task.id %>" type="hidden" name="query_task_id" value="<%= a_task.id %>">
 
+            <button type="submit" class="btn btn-warning"><%= a_task.name %></button>
+          </form>
+        <% end %>
+      </div>
+    </div>
 
-<h3>
-  What Skills Do You Have?
-</h3>
+    <div class="card-header bg-success text-white border-0">
+      Skills you have
+    </div>
 
-<% Task.all.each do |a_task|%>
-  <form action="/insert_skill" method="post">
-    <label for="task_<%= a_task.id %>"></label>
-    <input id="task_<%= a_task.id %>" type="hidden" name="query_task_id" value="<%= a_task.id %>">
+    <div class="card-body">
+      <table>
+        <% @the_provider.skills.each do |a_skill| %>
 
-    <button><%= a_task.name %></button>
-  </form>
-<% end %>
+          <tr>
+            <td>
+              <%= a_skill.task.name %>
+            </td>
 
+            <td>
+              <a href="/delete_skill/<%= a_skill.id %>">
+                <button class="btn btn-danger">
+                  Remove
+                </button>
+              </a>
+            </td>
+          <tr>
 
-<h3>
-  Skills
-</h3>
+        <% end %>
+      </table>
+    </div>
+  </div>
 
-<div>
-  <table>
-    <% @the_provider.skills.each do |a_skill| %>
+  <div class="cols mb-4 border-0">
+    <div class="card border-0 bg-light">
+      <div class="card-header bg-success text-white border-0">
+        What payments do you accept?
+      </div>
 
-      <tr>
-        <td>
-          <%= a_skill.task.name %>
-        </td>
+      <div class="card-body">
+       <% PaymentType.all.each do |a_payment|%>
+          <form action="/insert_payment_accepted" method="post">
+            <label for="payment_<%= a_payment.id %>"></label>
+            <input id="payment_<%= a_payment.id %>" type="hidden" name="query_payment_type_id" value="<%= a_payment.id %>">
 
-        <td>
-          <a href="/delete_skill/<%= a_skill.id %>">Remove</a>
-        </td>
-      <tr>
+            <button type="submit" class="btn btn-warning"><%= a_payment.name %></button>
+          </form>
+        <% end %>
+      </div>
+    </div>
 
-    <% end %>
-  </table>
-</div>
+    <div class="card-header bg-success text-white border-0">
+      Payment types accepted
+    </div>
 
-<h3>
-  What payments do you accept?
-</h3>
+    <div class="card-body">
+      <table>
+        <% @the_provider.payment_accepteds.each do |a_payment_acc| %>
 
-<% PaymentType.all.each do |a_payment|%>
-  <form action="/insert_payment_accepted" method="post">
-    <label for="payment_<%= a_payment.id %>"></label>
-    <input id="payment_<%= a_payment.id %>" type="hidden" name="query_payment_type_id" value="<%= a_payment.id %>">
+          <tr>
+            <td>
+              <%= a_payment_acc.payment_type.name %>
+            </td>
 
-    <button><%= a_payment.name %></button>
-  </form>
-<% end %>
+            <td>
+              <a href="/delete_payment_accepted/<%= a_payment_acc.id %>">
+                <button class="btn btn-danger">
+                  Remove
+                </button>
+              </a>
+            </td>
+          <tr>
 
-
-<h3>
-  Payment Types Accepted
-</h3>
-
-<div>
-  <table>
-    <% @the_provider.payment_accepteds.each do |a_payment_acc| %>
-
-      <tr>
-        <td>
-          <%= a_payment_acc.payment_type.name %>
-        </td>
-
-        <td>
-          <a href="/delete_payment_accepted/<%= a_payment_acc.id %>">Remove</a>
-        </td>
-      <tr>
-
-    <% end %>
-  </table>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>
 
 <div>
   <form action="/provider/<%= @current_provider.id %>">
-    <button>Done</button>
+    <button type="submit" class="btn btn-danger" style="width: 100%">Done</button>
   </form>
 </div>

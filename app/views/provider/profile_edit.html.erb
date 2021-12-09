@@ -48,7 +48,7 @@
         <input class="form-control" id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
       </div>
 
-      <button type="submit" class="btn btn-success">
+      <button type="submit" class="btn btn-danger">
         <strong>Update Account</strong>
       </button>
     </form>
@@ -60,8 +60,8 @@
 
   <div class="cols mb-4 border-0">
     <div class="card border-0 bg-light">
-      <div class="card-header bg-success text-white border-0">
-        What language do you speak?
+      <div class="card-header bg-dark text-white border-0">
+        Add languages
       </div>
 
       <div class="card-body">
@@ -70,14 +70,14 @@
             <label for="language_<%= a_language.id %>"></label>
             <input id="language_<%= a_language.id %>" type="hidden" name="query_language_id" value="<%= a_language.id %>">
 
-            <button type="submit" class="btn btn-warning"><%= a_language.name %></button>
+            <button type="submit" class="btn btn-dark" style="margin-top: 10px"><%= a_language.name %></button>
           </form>
         <% end %>
       </div>
     </div>
 
-    <div class="card-header bg-success text-white border-0">
-      Languages you speak
+    <div class="card-header bg-danger text-white border-0">
+      Remove languages
     </div>
 
     <div class="card-body">
@@ -105,8 +105,8 @@
 
   <div class="cols mb-4 border-0">
     <div class="card border-0 bg-light">
-      <div class="card-header bg-success text-white border-0">
-        What neighborhoods do you serve?
+      <div class="card-header bg-dark text-white border-0">
+        Add neighborhoods
       </div>
 
       <div class="card-body">
@@ -115,14 +115,14 @@
             <label for="neighborhood_<%= a_neighborhood.id %>"></label>
             <input id="neighborhood_<%= a_neighborhood.id %>" type="hidden" name="query_neighborhood_id" value="<%= a_neighborhood.id %>">
 
-            <button type="submit" class="btn btn-warning"><%= a_neighborhood.name %></button>
+            <button type="submit" class="btn btn-dark" style="margin-top: 10px"><%= a_neighborhood.name %></button>
           </form>
         <% end %>
       </div>
     </div>
 
-    <div class="card-header bg-success text-white border-0">
-      Neighborhoods you serve
+    <div class="card-header bg-danger text-white border-0">
+      Remove neighborhoods
     </div>
 
     <div class="card-body">
@@ -150,8 +150,8 @@
 
   <div class="cols mb-4 border-0">
     <div class="card border-0 bg-light">
-      <div class="card-header bg-success text-white border-0">
-        What special needs do you serve?
+      <div class="card-header bg-dark text-white border-0">
+        Add special needs
       </div>
 
       <div class="card-body">
@@ -160,14 +160,14 @@
             <label for="need_<%= a_need.id %>"></label>
             <input id="need_<%= a_need.id %>" type="hidden" name="query_need_id" value="<%= a_need.id %>">
 
-            <button type="submit" class="btn btn-warning"><%= a_need.name %></button>
+            <button type="submit" class="btn btn-dark" style="margin-top: 10px"><%= a_need.name %></button>
           </form>
         <% end %>
       </div>
     </div>
 
-    <div class="card-header bg-success text-white border-0">
-      Special needs you serve
+    <div class="card-header bg-danger text-white border-0">
+      Remove special needs
     </div>
 
     <div class="card-body">
@@ -195,8 +195,8 @@
 
   <div class="cols mb-4 border-0">
     <div class="card border-0 bg-light">
-      <div class="card-header bg-success text-white border-0">
-        What skills do you have?
+      <div class="card-header bg-dark text-white border-0">
+        Add skills
       </div>
 
       <div class="card-body">
@@ -205,14 +205,14 @@
             <label for="task_<%= a_task.id %>"></label>
             <input id="task_<%= a_task.id %>" type="hidden" name="query_task_id" value="<%= a_task.id %>">
 
-            <button type="submit" class="btn btn-warning"><%= a_task.name %></button>
+            <button type="submit" class="btn btn-dark" style="margin-top: 10px"><%= a_task.name %></button>
           </form>
         <% end %>
       </div>
     </div>
 
-    <div class="card-header bg-success text-white border-0">
-      Skills you have
+    <div class="card-header bg-danger text-white border-0">
+      Remove skills
     </div>
 
     <div class="card-body">
@@ -240,8 +240,8 @@
 
   <div class="cols mb-4 border-0">
     <div class="card border-0 bg-light">
-      <div class="card-header bg-success text-white border-0">
-        What payments do you accept?
+      <div class="card-header bg-dark text-white border-0">
+        Add payments
       </div>
 
       <div class="card-body">
@@ -250,14 +250,14 @@
             <label for="payment_<%= a_payment.id %>"></label>
             <input id="payment_<%= a_payment.id %>" type="hidden" name="query_payment_type_id" value="<%= a_payment.id %>">
 
-            <button type="submit" class="btn btn-warning"><%= a_payment.name %></button>
+            <button type="submit" class="btn btn-dark" style="margin-top: 10px"><%= a_payment.name %></button>
           </form>
         <% end %>
       </div>
     </div>
 
-    <div class="card-header bg-success text-white border-0">
-      Payment types accepted
+    <div class="card-header bg-danger text-white border-0">
+      Remove payments
     </div>
 
     <div class="card-body">
@@ -284,8 +284,8 @@
   </div>
 </div>
 
-<div>
+<div class="d-flex">
   <form action="/provider/<%= @current_provider.id %>">
-    <button type="submit" class="btn btn-danger" style="width: 100%">Done</button>
+    <button type="submit" class="btn btn-danger" style="padding: 10px 30px 10px 30px"><strong>Update Information</strong></button>
   </form>
 </div>

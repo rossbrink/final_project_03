@@ -21,9 +21,8 @@ class ReviewsController < ApplicationController
     the_review = Review.new
     the_review.provider_id = params.fetch("query_provider_id")
     the_review.author_id = @current_user.id
-    the_review.rating = params.fetch("query_rating")
     the_review.description = params.fetch("query_description")
-    the_review.title = params.fetch("query_title")
+    # the_review.title = params.fetch("query_title")
 
     if the_review.valid?
       the_review.save

@@ -1,183 +1,199 @@
-<h1>
-  <%= @the_provider.full_name %>
-</h1>
+<div class="container">
+<div class="card mb-3 bg-light border-0" style="margin-top: 100px">
+  <div class="row no-gutters">
+    <div class="col-md-2">
+      <img src="<%= @the_provider.image %>" style="width: 100%">
+    </div>
 
-<div>
-  <img src="<%= @the_provider.image %>" width="250px">
-</div>
-
-<div>
-  <h1>
-    $<%= @the_provider.price.to_i %>/hr
-  </h1>
-</div>
-
-<div>
-  <% if @current_user == nil && @current_provider == nil %>
-    <a href="/sign_in_split">
-      <button class="button">Sign in to email</button>
-    </a>
-  <% else %>
-    <a href="mailto:<%= @the_provider.email %>" target="_blank">
-      <button class="button">Email</button>
-    </a>
-  <% end %>
-</div>
-
-<% if @current_provider != nil %>
-  <% if @current_provider.id == @the_provider.id %>
-    <form action="/provider/<%= @current_provider.id %>/edit" method="get">
-      <button>Edit</button>
-    </form>
-    <form action="/provider_sign_out" method="get">
-      <button>Sign Out</button>
-    </form>
-  <% else %>
-  <% end %>
-<% else %>
-<% end %>
-
-<h3>
-  Description
-</h3>
-
-<p>
-  <%= @the_provider.description %>
-</p>
-
-<div class="card">
-  <div class="card-header">
-    Languages
-  </div>
-  <ul class="list-group list-group-flush">
-    <% @the_provider.languages.each do |a_language| %>
-      <li class="list-group-item">
-        <%= a_language.name %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-<div class="card">
-  <div class="card-header">
-    Neighborhoods
-  </div>
-  <ul class="list-group list-group-flush">
-    <% @the_provider.neighborhoods.each do |a_neighborhood| %>
-      <li class="list-group-item">
-        <%= a_neighborhood.name %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-<div class="card">
-  <div class="card-header">
-    Special Needs Experience
-  </div>
-  <ul class="list-group list-group-flush">
-    <% @the_provider.needs.each do |a_need| %>
-      <li class="list-group-item">
-        <%= a_need.name %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-<div class="card">
-  <div class="card-header">
-    Skills
-  </div>
-  <ul class="list-group list-group-flush">
-    <% @the_provider.skills.each do |a_skill| %>
-      <li class="list-group-item">
-        <%= a_skill.task.name %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-<div class="card">
-  <div class="card-header">
-    Payment
-  </div>
-  <ul class="list-group list-group-flush">
-    <% @the_provider.payment_accepteds.each do |a_payment_acc| %>
-      <li class="list-group-item">
-        <%= a_payment_acc.payment_type.name %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-<div class="card">
-  <div class="card-header">
-    Reviews
-  </div>
+    <div class="col-md-4">
+      <div class="card-body">
+        <h3 class="card-title"><%= @the_provider.full_name %></h3>
+        <h1 class="card-text">$<%= @the_provider.price.to_i %>/hr</h1>
+        <% if @current_user == nil && @current_provider == nil %>
+          <a href="/sign_in_split">
+            <button class="btn btn-warning" style="width: 50%"><strong>Sign in to email</strong></button>
+          </a>
+        <% else %>
+          <a href="mailto:<%= @the_provider.email %>" target="_blank">
+            <button class="btn btn-warning" style="width: 50%"><strong>Email</strong></button>
+          </a>
+        <% end %>
 
 
 
-<% if @current_user != nil %>
-  <form action="/insert_review" method="post" enctype="multipart/form-data">
-
-  <div>
-    <label for="title">Title</label>
-    <input id="title" name="query_title" type="text">
-  </div>
-
-  <div>
-    <label for="description">Description</label>
-    <textarea id="description" name="query_description">
-    </textarea>
-  </div>
-  
-  <div>
-    <label for="provider_id"></label>
-    <input id="provider_id" name="query_provider_id" type="hidden" value="<%= @the_provider.id %>">
-  </div>
-
-  <div>
-    <label for="author_id"></label>
-    <input id="author_id" name="query_author_id" type="hidden">
-  </div>
-
-  <button>
-    Post a Review
-  </button>
-
-  </form>
-<% else %>
-<% end %>
-
-<ul class="list-group">
-
-    <% @the_provider.reviews.each do |a_review| %>
-
-        <li class="list-group-item active">
-          <%= a_review.title %>
-        </li>
-
-        <li class="list-group-item">
-          <%= a_review.description %>
-        </li>
-
-        <li class="list-group-item">
-          Author: <%= a_review.user.first_name %>
-        </li>
-
-      <% if @current_user != nil %>
-        <% if a_review.author_id == @current_user.id %>
-          <td>
-            <a href="/delete_review/<%= a_review.id %>">
-              Remove
-            </a>
-          </td>
+        <% if @current_provider != nil %>
+          <% if @current_provider.id == @the_provider.id %>
+            <form action="/provider/<%= @current_provider.id %>/edit" method="get">
+              <button class="btn btn-warning" style="width: 50%"><strong>Edit</strong></button>
+            </form>
+            <form action="/provider_sign_out" method="get">
+              <button class="btn btn-warning" style="width: 50%"><strong>Sign Out</strong></button>
+            </form>
+          <% else %>
+          <% end %>
         <% else %>
         <% end %>
-      <% else %>
-      <% end %>
-      </ul>
 
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+    <div class="card border-0 bg-light">
+      <div class="card-header bg-success text-white border-0">
+          <strong>Description</strong>
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+            <%= @the_provider.description %>
+        </p>
+      </div>
+    </div>
+
+
+<div class="container">
+<div class="row row-cols-md-5" style="margin-top: 25px">
+
+  <div class="cols mb-4 border-0">
+    <div class="card h-100 border-0 bg-light">
+      <div class="card-header bg-success text-white border-0">
+        <strong>Languages</strong>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @the_provider.languages.each do |a_language| %>
+          <li class="list-group-item bg-light border-0">
+            <%= a_language.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cols mb-4">
+    <div class="card h-100 h-100 border-0 bg-light">
+      <div class="card-header bg-success text-white border-0">
+        <strong>Neighborhoods</strong>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @the_provider.neighborhoods.each do |a_neighborhood| %>
+          <li class="list-group-item bg-light border-0">
+            <%= a_neighborhood.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cols mb-4">
+    <div class="card h-100 h-100 border-0 bg-light">
+      <div class="card-header bg-success text-white border-0">
+        <strong>Experience With:</strong>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @the_provider.needs.each do |a_need| %>
+          <li class="list-group-item bg-light border-0">
+            <%= a_need.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cols mb-4">
+    <div class="card h-100 h-100 border-0 bg-light">
+      <div class="card-header bg-success text-white border-0">
+        <strong>Skills</strong>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @the_provider.skills.each do |a_skill| %>
+          <li class="list-group-item bg-light border-0">
+            <%= a_skill.task.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cols mb-4">
+    <div class="card h-100 h-100 border-0 bg-light">
+      <div class="card-header bg-success text-white border-0">
+        <strong>Payment</strong>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @the_provider.payment_accepteds.each do |a_payment_acc| %>
+          <li class="list-group-item bg-light border-0">
+            <%= a_payment_acc.payment_type.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div class="card h-100 h-100 border-0 bg-light">
+  <div class="card-header bg-success text-white border-0">
+    <strong>Reviews</strong>
+  </div>
+
+  <ul class="list-group">
+
+      <% @the_provider.reviews.each do |a_review| %>
+
+          <li class="list-group-item bg-warning border-0">
+            <%= a_review.user.first_name %>
+          </li>
+
+          <li class="list-group-item bg-light border-0">
+            <%= a_review.description %>
+          </li>
+
+        <% if @current_user != nil %>
+          <% if a_review.author_id == @current_user.id %>
+          <li class="list-group-item border-0">
+            <a class="btn btn-primary" href="/delete_review/<%= a_review.id %>">
+              Remove
+            </a>
+          </li>
+          <% else %>
+          <% end %>
+        <% else %>
+        <% end %>
+        </ul>
+      <% end %>
+    </table>
+  </ul>
+
+  <div class="card border-0 bg-light" style="margin-top: 25px">
+    <div class="card-header bg-success text-white border-0">
+      <strong>Write a Review</strong>
+    </div>
+
+    <div class="card-body">
+
+      <% if @current_user != nil %>
+      <form action="/insert_review" method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <textarea id="description" name="query_description" class="form-control">
+          </textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+          Post a Review
+        </button>
+        
+        <div>
+          <label for="provider_id"></label>
+          <input id="provider_id" name="query_provider_id" type="hidden" value="<%= @the_provider.id %>">
+        </div>   
+
+      </form>
+    <% else %>
     <% end %>
-  </table>
+  </div>
 </div>

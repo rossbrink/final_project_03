@@ -45,98 +45,76 @@
   <%= @the_provider.description %>
 </p>
 
-<h3>
-  Languages
-</h3>
-
-<div>
-  <table>
+<div class="card">
+  <div class="card-header">
+    Languages
+  </div>
+  <ul class="list-group list-group-flush">
     <% @the_provider.languages.each do |a_language| %>
-
-      <tr>
-        <td>
-          <%= a_language.name %>
-        </td>
-      <tr>
-
+      <li class="list-group-item">
+        <%= a_language.name %>
+      </li>
     <% end %>
-  </table>
+  </ul>
 </div>
 
-<h3>
-  Neighborhoods Served
-</h3>
-
-<div>
-  <table>
+<div class="card">
+  <div class="card-header">
+    Neighborhoods
+  </div>
+  <ul class="list-group list-group-flush">
     <% @the_provider.neighborhoods.each do |a_neighborhood| %>
-
-      <tr>
-        <td>
-          <%= a_neighborhood.name %>
-        </td>
-      <tr>
-
+      <li class="list-group-item">
+        <%= a_neighborhood.name %>
+      </li>
     <% end %>
-  </table>
+  </ul>
 </div>
 
-<h3>
-  Special Needs Served
-</h3>
-
-<div>
-  <table>
+<div class="card">
+  <div class="card-header">
+    Special Needs Experience
+  </div>
+  <ul class="list-group list-group-flush">
     <% @the_provider.needs.each do |a_need| %>
-
-      <tr>
-        <td>
-          <%= a_need.name %>
-        </td>
-      <tr>
-
+      <li class="list-group-item">
+        <%= a_need.name %>
+      </li>
     <% end %>
-  </table>
+  </ul>
 </div>
 
-<h3>
-  Skills
-</h3>
-
-<div>
-  <table>
+<div class="card">
+  <div class="card-header">
+    Skills
+  </div>
+  <ul class="list-group list-group-flush">
     <% @the_provider.skills.each do |a_skill| %>
-
-      <tr>
-        <td>
-          <%= a_skill.task.name %>
-        </td>
-      </tr>
+      <li class="list-group-item">
+        <%= a_skill.task.name %>
+      </li>
     <% end %>
-  </table>
+  </ul>
 </div>
 
-<h3>
-  Payment Types Accepted
-</h3>
-
-<div>
-  <table>
+<div class="card">
+  <div class="card-header">
+    Payment
+  </div>
+  <ul class="list-group list-group-flush">
     <% @the_provider.payment_accepteds.each do |a_payment_acc| %>
-
-      <tr>
-        <td>
-          <%= a_payment_acc.payment_type.name %>
-        </td>
-
+      <li class="list-group-item">
+        <%= a_payment_acc.payment_type.name %>
+      </li>
     <% end %>
-  </table>
+  </ul>
 </div>
 
+<div class="card">
+  <div class="card-header">
+    Reviews
+  </div>
 
-<h3>
-  Reviews
-</h3>
 
 
 <% if @current_user != nil %>
@@ -145,11 +123,6 @@
   <div>
     <label for="title">Title</label>
     <input id="title" name="query_title" type="text">
-  </div>
-
-  <div>
-    <label for="rating">Rating</label>
-    <input id="rating" name="query_rating" type="text">
   </div>
 
   <div>
@@ -176,26 +149,21 @@
 <% else %>
 <% end %>
 
-<div>
-  <table>
+<ul class="list-group">
+
     <% @the_provider.reviews.each do |a_review| %>
 
-      <tr>
-        <td>
-          <%= a_review.rating %>
-        </td>
-
-        <td>
+        <li class="list-group-item active">
           <%= a_review.title %>
-        </td>
+        </li>
 
-        <td>
+        <li class="list-group-item">
           <%= a_review.description %>
-        </td>
+        </li>
 
-        <td>
-          <%= a_review.user.first_name %>
-        </td>
+        <li class="list-group-item">
+          Author: <%= a_review.user.first_name %>
+        </li>
 
       <% if @current_user != nil %>
         <% if a_review.author_id == @current_user.id %>
@@ -208,7 +176,7 @@
         <% end %>
       <% else %>
       <% end %>
-      <tr>
+      </ul>
 
     <% end %>
   </table>

@@ -14,6 +14,10 @@
         <%= search_form_for(@q, url: "/", method: :get) do |f| %>
 
           <div>
+            <%= f.text_field :tasks_name_cont, :class => "form-control border-0 rounded-0", :placeholder => "Babysitting..." %>
+          </div>
+
+          <div>
             <%= f.text_field :price_gteq, :class => "form-control border-0 rounded-0", :placeholder => "Min $/hr" %>
           </div>
 
@@ -48,7 +52,50 @@
 <div class="container" style="padding-top: 100px">
   <table class="table table-borderless">
     <% @providers.each do |provider| %>
-    
+
+      <div class="card mb-3 bg-light border-0">
+
+        <div class="row no-gutters">
+
+          <div class="col-md-2" style="padding: 0px 10px 0px 0px">
+            <img src="<%= provider.image %>" style="width: 100%">
+          </div>
+
+          <div class="col-md-4">
+            <div class="card-body">
+              <h3 class="card-title"><%= provider.full_name %></h3>
+              <h1 class="card-text">$<%= provider.price.to_i %>/hr</h1>
+              <p class="card-text">
+                <% provider.spoken_languages.each do |a_spoken_language| %>
+                  <%= a_spoken_language.language.name %>
+                <% end %>
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-md-5">
+            <div class="card-body">
+              <div>
+                 <ul class="list-unstyled row">
+                    <% provider.skills.each do |a_skill| %>
+                    <li class="list-group-item col-6 border-0 bg-light">
+                      <%= a_skill.task.name %>
+                    </li>
+                    <% end %> 
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-1 bg-success text-white">
+            <a  href="/provider/<%= provider.id %>" class="stretched-link">
+            </a>
+          </div>
+
+
+        </div>
+      </div>
+
       <tr>
         <td>
           <img src="<%= provider.image %>" width="250px">
@@ -69,8 +116,8 @@
         </td>
 
         <td>
-          <% provider.services.each do |a_service| %>
-              <%= a_service.need.name %>
+          <% provider.skills.each do |a_skill| %>
+              <%= a_skill.task.name %>
           <% end %>
         </td>
 

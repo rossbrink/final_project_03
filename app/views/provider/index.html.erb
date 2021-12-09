@@ -58,7 +58,7 @@
         <div class="row no-gutters">
 
           <div class="col-md-2" style="padding: 0px 10px 0px 0px">
-            <img src="<%= provider.image %>" style="width: 100%">
+            <img src="<%= provider.image %>" class="img-fluid">
           </div>
 
           <div class="col-md-4">
@@ -87,49 +87,22 @@
             </div>
           </div>
 
-          <div class="col-md-1 bg-success text-white">
-            <a  href="/provider/<%= provider.id %>" class="stretched-link">
-            </a>
+          <div class="col-md-1">
+            <form action="/provider/<%= provider.id %>">
+              <button class="bg-success border-0 text-white" style="width: 100%; height: 100%">
+                Details
+              </button>
+            </form>
           </div>
 
 
         </div>
       </div>
 
-      <tr>
-        <td>
-          <img src="<%= provider.image %>" width="250px">
-        </td>
 
-        <td>
-          <%= provider.full_name %>
-        </td>
-
-        <td>
-          $<%= provider.price.to_i %>/hr
-        </td>
-
-        <td>
-          <% provider.spoken_languages.each do |a_spoken_language| %>
-              <%= a_spoken_language.language.name %>
-          <% end %>
-        </td>
-
-        <td>
-          <% provider.skills.each do |a_skill| %>
-              <%= a_skill.task.name %>
-          <% end %>
-        </td>
-
-        <td>
-          <a href="/provider/<%= provider.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
     
     <% end %>
 
-  </table>
+
 
 </div>

@@ -94,13 +94,15 @@ class UserAuthenticationController < ApplicationController
     @user.first_name = params.fetch("query_first_name")
     @user.last_name = params.fetch("query_last_name")
     @user.reviews_count = params.fetch("query_reviews_count")
+
     
     if @user.valid?
       @user.save
 
-      redirect_to("/", { :notice => "User account updated successfully."})
+      redirect_to("/user/#{@current_user.id}", { :notice => "User account updated successfully."})
     else
-      render({ :template => "user_authentication/edit_profile_with_errors.html.erb" })
+      redirect_to("/user/#{@current_user.id}", { :notice => "User account did not update successfully."})
+      # render({ :template => "user_authentication/edit_profile_with_errors.html.erb" })
     end
   end
 

@@ -58,7 +58,7 @@ class ProviderAuthenticationController < ApplicationController
     if save_status == true
       session[:provider_id] = @provider.id
    
-      redirect_to("/", { :notice => "Provider account created successfully."})
+      redirect_to("/provider/#{@provider.id}", { :notice => "Provider account created successfully."})
     else
       redirect_to("/provider_sign_up", { :alert => "Provider account failed to create successfully."})
     end

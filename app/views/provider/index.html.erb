@@ -14,7 +14,7 @@
         <%= search_form_for(@q, url: "/", method: :get) do |f| %>
 
           <div>
-            <%= f.text_field :tasks_name_cont, :class => "form-control border-0 rounded-0", :placeholder => "Babysitting..." %>
+            <%= f.select :tasks_name_cont, options_from_collection_for_select(Task.all, :name, :name, @q.tasks_name_cont), { :prompt => "What do you need help with?" }, { :class => 'form-control border-0 rounded-0' } %>
           </div>
 
           <div>

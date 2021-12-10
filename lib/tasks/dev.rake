@@ -285,16 +285,16 @@ Provider.destroy_all
   # provider.save
 end
 
-ross = Provider.new
-ross.id = 1
-ross.description = "Just a good-ass dood."
-ross.first_name = "Ross"
-ross.last_name = "Brinkman"
-ross.email = "ross@email.com"
-ross.password = "password"
-ross.price = 15
-ross.remote_image_url = "https://i.ibb.co/HCK0xSX/ross2.jpg"
-ross.save
+# ross = Provider.new
+# ross.id = 1
+# ross.description = "Just a good-ass dood."
+# ross.first_name = "Ross"
+# ross.last_name = "Brinkman"
+# ross.email = "ross@email.com"
+# ross.password = "password"
+# ross.price = 15
+# ross.remote_image_url = "https://i.ibb.co/HCK0xSX/ross2.jpg"
+# ross.save
 
 # wartortle = Provider.new
 # wartortle = Provider.new

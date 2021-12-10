@@ -93,7 +93,7 @@ class UserAuthenticationController < ApplicationController
     @user.password_confirmation = params.fetch("query_password_confirmation")
     @user.first_name = params.fetch("query_first_name")
     @user.last_name = params.fetch("query_last_name")
-    @user.reviews_count = params.fetch("query_reviews_count")
+    # @user.reviews_count = params.fetch("query_reviews_count")
 
     
     if @user.valid?

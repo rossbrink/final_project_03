@@ -19,15 +19,14 @@ class SpokenLanguagesController < ApplicationController
 
   def create
     the_spoken_language = SpokenLanguage.new
-    # the_spoken_language.provider_id = params.fetch("query_provider_id")
     the_spoken_language.provider_id = @current_provider.id
     the_spoken_language.language_id = params.fetch("query_language_id")
 
     if the_spoken_language.valid?
       the_spoken_language.save
-      redirect_to("/provider/#{the_spoken_language.provider_id}", { :notice => "Spoken language created successfully." })
+      redirect_to("/provider/#{the_spoken_language.provider_id}/edit", { :notice => "Spoken language created successfully." })
     else
-      redirect_to("/spoken_languages", { :notice => "Spoken language failed to create successfully." })
+      redirect_to("/provider/#{the_spoken_language.provider_id}/edit", { :notice => "Spoken language failed to create successfully." })
     end
   end
 
@@ -52,6 +51,6 @@ class SpokenLanguagesController < ApplicationController
 
     the_spoken_language.destroy
 
-    redirect_to("/spoken_languages", { :notice => "Spoken language deleted successfully."} )
+    redirect_to("/provider/#{the_spoken_language.provider_id}/edit", { :notice => "Spoken language deleted successfully."} )
   end
 end

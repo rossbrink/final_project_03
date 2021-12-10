@@ -1,47 +1,108 @@
-INDEX
+<div class="bg-light" style="padding: 200px 0px 200px 0px">
+  <div class="container">
 
-<h3>
-  All Provider
-</h3>
 
-<table border="1">
-  <tr>
-    <th>
-      Image
-    </th>
+      <h1>
+        Local care for your child with special needs.
+      </h1>
 
-    <th>
-      Name
-    </th>
 
-    <th>
-      Price
-    </th>
 
-    <th>
-      Link
-    </th>
-  </tr>
+    <form class="bg-white">
+      <div class="form-inline d-flex justify-content-between" style="margin-top: 30px">
+        
+        <%= search_form_for(@q, url: "/", method: :get) do |f| %>
 
-  <% @list_of_providers.each do |provider| %>
-  <tr>
-    <td>
-      <img src="<%= provider.image %>" width="250px">
-    </td>
+          <div>
+            <%= f.select :tasks_name_cont, options_from_collection_for_select(Task.all, :name, :name, @q.tasks_name_cont), { :prompt => "What do you need help with?" }, { :class => 'form-control border-0 rounded-0' } %>
+          </div>
 
-    <td>
-      <%= provider.first_name %>
-    </td>
+          <div>
+            <%= f.text_field :price_gteq, :class => "form-control border-0 rounded-0", :placeholder => "Min $/hr" %>
+          </div>
 
-    <td>
-      <%= provider.price %>
-    </td>
+          <div>
+            <%= f.text_field :price_lteq, :class => "form-control border-0 rounded-0", :placeholder => "Max $/hr" %>
+          </div>
 
-    <td>
-      <a href="/provider/<%= provider.id %>">
-        Show details
-      </a>
-    </td>
-  </tr>
-  <% end %>
-</table>
+          <div>
+              <%= f.select :languages_name_cont, options_from_collection_for_select(Language.all, :name, :name, @q.languages_name_cont), { :prompt => "Language" }, { :class => 'form-control border-0 rounded-0' } %>
+          </div>
+
+          <div>
+            <%= f.select :neighborhoods_name_cont, options_from_collection_for_select(Neighborhood.all, :name, :name, @q.neighborhoods_name_cont), { :prompt => "Neighborhood" }, { :class => 'form-control border-0 rounded-0' } %>
+          </div>
+
+          <div>      
+            <%= f.submit :class => "btn btn-success border-0 rounded-0" %>
+          </div>
+
+        <% end %>
+        
+      </div>
+    </form>
+
+  </div>
+</div>
+
+  
+
+
+
+<div class="container" style="padding-top: 100px">
+  <table class="table table-borderless">
+    <% @providers.each do |provider| %>
+
+      <div class="card mb-3 bg-light border-0">
+
+        <div class="row no-gutters">
+
+          <div class="col-md-2" style="padding: 0px 10px 0px 0px">
+            <img src="<%= provider.image %>" class="img-fluid">
+          </div>
+
+          <div class="col-md-4">
+            <div class="card-body">
+              <h3 class="card-title"><%= provider.full_name %></h3>
+              <h1 class="card-text">$<%= provider.price.to_i %>/hr</h1>
+              <p class="card-text">
+                <% provider.spoken_languages.each do |a_spoken_language| %>
+                  <%= a_spoken_language.language.name %>
+                <% end %>
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-md-5">
+            <div class="card-body">
+              <div>
+                 <ul class="list-unstyled row">
+                    <% provider.skills.each do |a_skill| %>
+                    <li class="list-group-item col-6 border-0 bg-light">
+                      <%= a_skill.task.name %>
+                    </li>
+                    <% end %> 
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-1">
+            <form action="/provider/<%= provider.id %>">
+              <button class="bg-success border-0 text-white" style="width: 100%; height: 100%">
+                <strong>Details</strong>
+              </button>
+            </form>
+          </div>
+
+
+        </div>
+      </div>
+
+
+    
+    <% end %>
+
+
+
+</div>

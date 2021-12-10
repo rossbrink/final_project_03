@@ -3,6 +3,18 @@ class ApplicationController < ActionController::Base
   
   # Uncomment this if you want to force users to sign in before any other actions
   # before_action(:force_user_sign_in)
+
+  before_action(:force_all_sign_in)
+
+  def sign_in_split
+    render({ :template => "all/sign_in_split.html.erb"})
+  end
+
+  def force_all_sign_in
+    if @current_user != nil && @current_provider != nil
+      redirect_to("/sign_in", { :notice => "Choose your user type."})
+    end   
+  end
   
   def load_current_user
     the_id = session[:user_id]

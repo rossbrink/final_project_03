@@ -13,67 +13,87 @@
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
 
+    <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
+    <meta charset="utf-8">
+    
+
+    <!-- Connect Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- Connect Bootstrap JavaScript and its dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Connect Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+
+    <!-- Make it responsive to small screens -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/my_styles.css">
+
   </head>
 
   <body>
-    <nav>
-      <ul>
-      <li>
-        <a href="/">
-          Home
-        </a>
-      </li>
-
-      <% if @current_provider == nil %>
-      <li>
-        <a href="/provider_sign_up">
-          Provider Sign Up
-        </a>
-      </li>
-
-      <li>
-        <a href="/provider_sign_in">
-          Provider Sign In
-        </a>
-      </li>
-
-      <% else %>
-      <li>
-        <a href="/provider_sign_out">
-          Provider Sign Out
-        </a>
-      </li>
-
-      <li>
-        <%= @current_provider.id %>
-      </li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light text-white">
+      <div class="container">
+      <a class="navbar-brand" href="/">
+        <img class="fas fa-hand-holding-heart">
+        <strong>HUG</strong>
+      </a>
       
-      <% end %>
+        <div class="collapse navbar-collapse navbar-nav" id="navbarSupportedContent">
+            <% if @current_provider == nil && @current_user == nil %>
+              <% elsif @current_provider != nil %>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/provider/<%= @current_provider.id %>"><%= @current_provider.first_name %><span class="sr-only">(current)</span></a>
+                </li>
+              <% elsif @current_user != nil %>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/user/<%= @current_user.id %>"><%= @current_user.first_name %><span class="sr-only">(current)</span></a>
+                </li>
+              <% end %>
 
-      <% if @current_user == nil %>
-      <li>
-        <a href="/user_sign_up">
-          User Sign Up
-        </a>
-      </li>
-
-      <li>
-        <a href="/user_sign_in">
-          User Sign In
-        </a>
-      </li>
-
-      <% else %>
-      <li>
-        <a href="/user_sign_out">
-          User Sign Out
-        </a>
-      </li>
-      <% end %>
-
-      </ul>
-
+              <% if @current_provider == nil && @current_user == nil %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                  Sign In
+                </a>
+              
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/user_sign_in">User</a>
+                  <a class="dropdown-item" href="/provider_sign_in">Provider</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/user_sign_up">User Sign Up</a>
+                  <a class="dropdown-item" href="/provider_sign_up">Provider Sign Up</a>
+                </div>
+              <% else %>
+              <% end %>
+          </div>
+          </div>
     </nav>
+
+<% if flash[:notice] %>
+  <div class="bg-light">
+    <div class="container">
+      <div class = "alert alert-success mb-0">
+          <%= flash[:notice] %>
+      </div>
+    </div>
+  </div>
+<% elsif flash[:alert] %>
+  <div class="bg-light">
+    <div class="container">
+      <div class = "alert alert-warning mb-0">
+          <%= flash[:alert] %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
     <%= yield %>
+
+  <div style="margin-top: 200px">
+  </div>
   </body>
 </html>

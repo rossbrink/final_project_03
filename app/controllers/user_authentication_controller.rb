@@ -1,9 +1,15 @@
 class UserAuthenticationController < ApplicationController
   # Uncomment this if you want to force users to sign in before any other actions
   # skip_before_action(:force_user_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
+  skip_before_action(:force_all_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
+
 
   def sign_in_form
     render({ :template => "user_authentication/sign_in.html.erb" })
+  end
+
+  def sign_in_form_to_email
+    render({ :template => "user_authentication/sign_in_to_email.html.erb" })
   end
 
   def create_cookie
@@ -26,6 +32,27 @@ class UserAuthenticationController < ApplicationController
     end
   end
 
+  def create_cookie_to_email
+    user = User.where({ :email => params.fetch("query_email") }).first
+    
+    the_supplied_password = params.fetch("query_password")
+    
+    if user != nil
+      are_they_legit = user.authenticate(the_supplied_password)
+    
+      if are_they_legit == false
+        redirect_to("/user_sign_in", { :alert => "Incorrect password." })
+      else
+        session[:user_id] = user.id
+      
+        redirect_to("/provider/1", { :notice => "Signed in successfully." })
+      end
+    else
+      redirect_to("/user_sign_in", { :alert => "No user with that email address." })
+    end
+  end
+
+
   def destroy_cookies
     reset_session
 
@@ -43,7 +70,6 @@ class UserAuthenticationController < ApplicationController
     @user.password_confirmation = params.fetch("query_password_confirmation")
     @user.first_name = params.fetch("query_first_name")
     @user.last_name = params.fetch("query_last_name")
-    @user.reviews_count = params.fetch("query_reviews_count")
 
     save_status = @user.save
 
@@ -67,14 +93,16 @@ class UserAuthenticationController < ApplicationController
     @user.password_confirmation = params.fetch("query_password_confirmation")
     @user.first_name = params.fetch("query_first_name")
     @user.last_name = params.fetch("query_last_name")
-    @user.reviews_count = params.fetch("query_reviews_count")
+    # @user.reviews_count = params.fetch("query_reviews_count")
+
     
     if @user.valid?
       @user.save
 
-      redirect_to("/", { :notice => "User account updated successfully."})
+      redirect_to("/user/#{@current_user.id}", { :notice => "User account updated successfully."})
     else
-      render({ :template => "user_authentication/edit_profile_with_errors.html.erb" })
+      redirect_to("/user/#{@current_user.id}", { :notice => "User account did not update successfully."})
+      # render({ :template => "user_authentication/edit_profile_with_errors.html.erb" })
     end
   end
 

@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Skill #<%= @the_skill.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/skills">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_skill/<%= @the_skill.id %>">
+          Delete skill
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Task
+      </dt>
+      <dd>
+        <%= @the_skill.task_id %>
+      </dd>
+
+      <dt>
+        Provider
+      </dt>
+      <dd>
+        <%= @the_skill.provider_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_skill.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_skill.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit skill
+    </h2>
+
+    <form action="/modify_skill/<%= @the_skill.id %>"  method="post" >
+      <div>
+        <label for="task_id_box">
+          Task
+        </label>
+
+        <input type="text" id="task_id_box" name="query_task_id" value="<%= @the_skill.task_id %>">
+      </div>
+
+      <div>
+        <label for="provider_id_box">
+          Provider
+        </label>
+
+        <input type="text" id="provider_id_box" name="query_provider_id" value="<%= @the_skill.provider_id %>">
+      </div>
+
+      <button>
+        Update skill
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

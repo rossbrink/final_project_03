@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Payment accepted #<%= @the_payment_accepted.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/payment_accepteds">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_payment_accepted/<%= @the_payment_accepted.id %>">
+          Delete payment accepted
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Payment type
+      </dt>
+      <dd>
+        <%= @the_payment_accepted.payment_type_id %>
+      </dd>
+
+      <dt>
+        Provider
+      </dt>
+      <dd>
+        <%= @the_payment_accepted.provider_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_payment_accepted.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_payment_accepted.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit payment accepted
+    </h2>
+
+    <form action="/modify_payment_accepted/<%= @the_payment_accepted.id %>"  method="post" >
+      <div>
+        <label for="payment_type_id_box">
+          Payment type
+        </label>
+
+        <input type="text" id="payment_type_id_box" name="query_payment_type_id" value="<%= @the_payment_accepted.payment_type_id %>">
+      </div>
+
+      <div>
+        <label for="provider_id_box">
+          Provider
+        </label>
+
+        <input type="text" id="provider_id_box" name="query_provider_id" value="<%= @the_payment_accepted.provider_id %>">
+      </div>
+
+      <button>
+        Update payment accepted
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

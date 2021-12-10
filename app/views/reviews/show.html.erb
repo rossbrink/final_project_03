@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Review #<%= @the_review.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/reviews">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_review/<%= @the_review.id %>">
+          Delete review
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Provider
+      </dt>
+      <dd>
+        <%= @the_review.provider_id %>
+      </dd>
+
+      <dt>
+        Author
+      </dt>
+      <dd>
+        <%= @the_review.author_id %>
+      </dd>
+
+      <dt>
+        Rating
+      </dt>
+      <dd>
+        <%= @the_review.rating %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_review.description %>
+      </dd>
+
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_review.title %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_review.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_review.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit review
+    </h2>
+
+    <form action="/modify_review/<%= @the_review.id %>"  method="post" >
+      <div>
+        <label for="provider_id_box">
+          Provider
+        </label>
+
+        <input type="text" id="provider_id_box" name="query_provider_id" value="<%= @the_review.provider_id %>">
+      </div>
+
+      <div>
+        <label for="author_id_box">
+          Author
+        </label>
+
+        <input type="text" id="author_id_box" name="query_author_id" value="<%= @the_review.author_id %>">
+      </div>
+
+      <div>
+        <label for="rating_box">
+          Rating
+        </label>
+
+        <input type="text" id="rating_box" name="query_rating" value="<%= @the_review.rating %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description"><%= @the_review.description %></textarea>
+      </div>
+
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <textarea id="title_box" name="query_title"><%= @the_review.title %></textarea>
+      </div>
+
+      <button>
+        Update review
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

@@ -53,4 +53,8 @@ class LanguagesController < ApplicationController
 
     redirect_to("/languages", { :notice => "Language deleted successfully."} )
   end
+
+  def add_language
+    params[:language_ids]
+  end
 end
